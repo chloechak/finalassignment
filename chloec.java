@@ -21,15 +21,16 @@ public class chloec extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Note Taker");
+        // Group root = new Group();   
         Text t = new Text();
         t.setFont(Font.font ("Verdana", 20));
         t.setX(50);
-        t.setY(130);
+        t.setY(150);
         t.setText("This is a text sample");
         t.setFill(Color.RED);  
         //Group root = new Group(t);   
 
-        ComboBox categories = new ComboBox();
+        ComboBox categories = new ComboBox();        
         categories.getItems().addAll(
             "Characters",
             "Literary Devices",
@@ -39,8 +40,9 @@ public class chloec extends Application {
             "Plot Analysis",
             "Additional Notes" 
         );
-        
-        StackPane root = new StackPane();
+        Group root = new Group();   
+
+        //StackPane root = new StackPane();
         root.getChildren().add(categories);
         root.getChildren().add(t);
 

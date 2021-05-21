@@ -4,6 +4,9 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -18,8 +21,16 @@ public class chloec extends Application {
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setTitle("Note Taker");
-        ComboBox emailComboBox = new ComboBox();
-        emailComboBox.getItems().addAll(
+        Text t = new Text();
+        t.setFont(Font.font ("Verdana", 20));
+        t.setX(50);
+        t.setY(130);
+        t.setText("This is a text sample");
+        t.setFill(Color.RED);  
+        //Group root = new Group(t);   
+
+        ComboBox categories = new ComboBox();
+        categories.getItems().addAll(
             "Characters",
             "Literary Devices",
             "Techniques",
@@ -28,66 +39,12 @@ public class chloec extends Application {
             "Plot Analysis",
             "Additional Notes" 
         );
-        // Button btn = new Button();
-        // btn.setText("Characters");
-        // btn.setOnAction(new EventHandler<ActionEvent>() {
- 
-        //     @Override
-        //     public void handle(ActionEvent event) {
-        //         System.out.println("Hello World!");
-        //     }
-        // });
-        // btn.setText("Literary devices");
-        // btn.setOnAction(new EventHandler<ActionEvent>() {
- 
-        //     @Override
-        //     public void handle(ActionEvent event) {
-        //         System.out.println("Hello World!");
-        //     }
-        // });
-        // btn.setText("Techniques");
-        // btn.setOnAction(new EventHandler<ActionEvent>() {
- 
-        //     @Override
-        //     public void handle(ActionEvent event) {
-        //         System.out.println("Hello World!");
-        //     }
-        // });
-        // btn.setText("Themes");
-        // btn.setOnAction(new EventHandler<ActionEvent>() {
- 
-        //     @Override
-        //     public void handle(ActionEvent event) {
-        //         System.out.println("Hello World!");
-        //     }
-        // });
-        // btn.setText("Important Quotes");
-        // btn.setOnAction(new EventHandler<ActionEvent>() {
- 
-        //     @Override
-        //     public void handle(ActionEvent event) {
-        //         System.out.println("Hello World!");
-        //     }
-        // });
-        // btn.setText("Plot Analysis");
-        // btn.setOnAction(new EventHandler<ActionEvent>() {
- 
-        //     @Override
-        //     public void handle(ActionEvent event) {
-        //         System.out.println("Hello World!");
-        //     }
-        // });
-        // btn.setText("Additional Notes");
-        // btn.setOnAction(new EventHandler<ActionEvent>() {
- 
-        //     @Override
-        //     public void handle(ActionEvent event) {
-        //         System.out.println("Hello World!");
-        //     }
-        // });
+        
         StackPane root = new StackPane();
-        root.getChildren().add(comboBox);
-        primaryStage.setScene(new Scene(root, 800, 600));
+        root.getChildren().add(categories);
+        root.getChildren().add(t);
+
+        primaryStage.setScene(new Scene(root, 600, 600));
         primaryStage.show();
     }
 }

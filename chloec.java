@@ -33,7 +33,8 @@ public class chloec extends Application {
         Label selected = new Label();
         EventHandler<ActionEvent> event = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                // Laksyha's part 
+                // Laksyha's part
+                selected.setText(addNotes.getValue() + " selected"); 
                 // add file 
                 // example of an action: 
                 selected.setText(addNotes.getValue() + " selected");

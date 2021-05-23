@@ -18,14 +18,15 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.regex.Pattern;
 
-public class App extends Application {
+public class chloeh extends Application {
     public static void main(String[] args) {
         launch(args);
     }
         
     final Button button = new Button ("Submit");
     final Label notification = new Label ();
-    final TextField subject = new TextField("");
+    final TextField character = new TextField("");
+    final TextField pageNumber = new TextField("");
     final TextArea text = new TextArea ("");
     
     String address = " ";
@@ -35,10 +36,16 @@ public class App extends Application {
         Scene scene = new Scene(new Group(), 450, 250);
         
         GridPane grid = new GridPane();
-        grid.add(subject, 1, 1, 3, 1);            
-        grid.add(text, 0, 2, 4, 1);
-        grid.add(button, 0, 3);
-        grid.add (notification, 1, 3, 3, 1);
+        grid.setVgap(4);
+        grid.setHgap(10);
+        grid.setPadding(new Insets(5, 5, 5, 5));
+        grid.add(new Label("Page Number: "), 0, 1);
+        grid.add(pageNumber, 1, 1, 2, 1);
+        grid.add(new Label("Character: "), 0, 2);
+        grid.add(character, 1, 2, 3, 2);
+        grid.add(new Label("Character Detail: "), 0, 4);
+        grid.add(text, 0, 5, 3, 1);             
+        grid.add(button, 0, 6);
         
         Group root = (Group)scene.getRoot();
         root.getChildren().add(grid);

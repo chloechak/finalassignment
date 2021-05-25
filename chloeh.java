@@ -23,16 +23,16 @@ public class chloeh extends Application {
         launch(args);
     }
         
-    final Button button = new Button ("Submit");
-    final Label notification = new Label ();
-    final TextField character = new TextField("");
-    final TextField pageNumber = new TextField("");
-    final TextArea text = new TextArea ("");
+    Button submitButton = new Button ("Submit");
+    TextField character = new TextField("");
+    TextField pageNumber = new TextField("");
+    TextArea detailText = new TextArea ("");
     
     String address = " ";
     
-    @Override public void start(Stage stage) {
-        stage.setTitle("Characters");
+    @Override
+    public void start(Stage secondaryStage) {
+        secondaryStage.setTitle("Characters");
         Scene scene = new Scene(new Group(), 450, 250);
         
         GridPane grid = new GridPane();
@@ -44,12 +44,12 @@ public class chloeh extends Application {
         grid.add(new Label("Character: "), 0, 2);
         grid.add(character, 1, 2, 3, 2);
         grid.add(new Label("Character Detail: "), 0, 4);
-        grid.add(text, 0, 5, 3, 1);             
-        grid.add(button, 0, 6);
+        grid.add(detailText, 0, 5, 3, 1);             
+        grid.add(submitButton, 0, 6);
         
         Group root = (Group)scene.getRoot();
         root.getChildren().add(grid);
-        stage.setScene(scene);
-        stage.show();
+        secondaryStage.setScene(scene);
+        secondaryStage.show();
     }    
 }

@@ -18,6 +18,10 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
  
 public class chloec extends Application {
+    private Button buttonReadLine;
+ 
+   private static int WINDOW_WIDTH  = 500;
+    private static int WINDOW_HEIGHT = 300;
     public static void main(String[] args) {
         launch(args);
     }
@@ -35,13 +39,18 @@ public class chloec extends Application {
         welcome.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20)); 
         welcome.setX(50); 
         welcome.setY(130);      
-        welcome.setText("Welcome to your note taker"); 
-    
-        ComboBox addNotes = new ComboBox(FXCollections.observableArrayList(categories));        
+         welcome.setText("Welcome to your note taker"); 
+         //Button buttonSelectFile;
+        // buttonSelectFile.setX(70);    
+         //buttonSelectFile = new Button("Select Input Text File");
+      //  buttonSelectFile.setOnAction((EventHandler<ActionEvent>) this);  
         
+        ComboBox addNotes = new ComboBox(FXCollections.observableArrayList(categories));       
+      
         EventHandler<ActionEvent> addFile = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                // Laksyha's part 
+                // Laksyha's part
+           
                 // add file 
                 // example of an action: 
                 selected1.setText(addNotes.getValue() + " selected");

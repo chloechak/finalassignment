@@ -110,7 +110,7 @@ public class scenes extends Application {
 
 class Characters extends scenes {
     public static void display (String value) {
-        
+        Stage window = new Stage();
         Scene scene2 = new Scene(new Group(), 850, 450);
 
         TextField character = new TextField("");
@@ -149,7 +149,9 @@ class Characters extends scenes {
         characterGrid.add(new Label("Character: "), 0, 3);
         characterGrid.add(character, 1, 2, 3, 2);
         characterGrid.add(new Label("Character Detail: "), 0, 4);
-        characterGrid.add(detailText, 0, 5, 3, 1);             
+        characterGrid.add(detailText, 0, 5, 3, 1); 
+ 
+                   
 
 
         // literary devices grid
@@ -162,7 +164,8 @@ class Characters extends scenes {
         literaryDevicesGrid.add(new Label("Literary Device: "), 0, 3);
         literaryDevicesGrid.add(literaryDevices, 1, 2, 3, 2);
         literaryDevicesGrid.add(new Label("Explanation: "), 0, 4);
-        literaryDevicesGrid.add(explanation, 0, 5, 3, 1);             
+        literaryDevicesGrid.add(explanation, 0, 5, 3, 1);   
+          
         
 
         // techniques grid
@@ -175,7 +178,8 @@ class Characters extends scenes {
         techniquesGrid.add(new Label("Technique used: "), 0, 3);
         techniquesGrid.add(techniques, 1, 2, 3, 2);
         techniquesGrid.add(new Label("How it was used/Impact: "), 0, 4);
-        techniquesGrid.add(impact, 0, 5, 3, 1);             
+        techniquesGrid.add(impact, 0, 5, 3, 1); 
+            
         
 
         // themes grid
@@ -189,7 +193,7 @@ class Characters extends scenes {
         themesGrid.add(themes, 1, 2, 3, 2);
         themesGrid.add(new Label("How is it Implied?: "), 0, 4);
         themesGrid.add(implied, 0, 5, 3, 1);             
-        
+
 
         // important quotes grid
         GridPane importantQuotesGrid = new GridPane();
@@ -201,7 +205,8 @@ class Characters extends scenes {
         importantQuotesGrid.add(new Label("Significant Quotes: "), 0, 3);
         importantQuotesGrid.add(importantQuotes, 1, 2, 3, 2);
         importantQuotesGrid.add(new Label("Quote Explanation: "), 0, 4);
-        importantQuotesGrid.add(quoteExplanation, 0, 5, 3, 1);             
+        importantQuotesGrid.add(quoteExplanation, 0, 5, 3, 1);  
+           
         
 
         // plot analysis grid
@@ -214,7 +219,8 @@ class Characters extends scenes {
         plotAnalysisGrid.add(new Label("Analysis Name: "), 0, 3);
         plotAnalysisGrid.add(plotAnalysis, 1, 2, 3, 2);
         plotAnalysisGrid.add(new Label("Plot Analysis: "), 0, 4);
-        plotAnalysisGrid.add(analysisText, 0, 5, 3, 1);             
+        plotAnalysisGrid.add(analysisText, 0, 5, 3, 1);     
+        
         
 
         // additional notes grid
@@ -227,86 +233,64 @@ class Characters extends scenes {
         additionalNotesGrid.add(new Label("Title: "), 0, 3);
         additionalNotesGrid.add(additionalNotes, 1, 2, 3, 2);
         additionalNotesGrid.add(new Label("Additional Note: "), 0, 4);
-        additionalNotesGrid.add(notes, 0, 5, 3, 1);             
+        additionalNotesGrid.add(notes, 0, 5, 3, 1); 
+
+
+
+
 
         Group root = (Group)scene2.getRoot();
-        
+
+
 
         switch (value) {
             case "Characters" : {
-                // Stage characterWindow = new Stage();
-                characterWindow.setTitle("Characters");
-                // window.setHeight(450);
-                // window.setWidth(250);
-
-                root.getChildren().add(characterGrid);
+                window.setTitle("Characters");
                 characterGrid.add(submitButton, 0, 6);
+                root.getChildren().add(characterGrid);
                 break;
             }
             case "Literary Devices" : {
-                // Stage literaryDevicesWindow = new Stage();
-                literaryDevicesWindow.setTitle("Literary Devices");
-                // window.setHeight(450);
-                // window.setWidth(250);
-
-                root.getChildren().add(literaryDevicesGrid);
+                window.setTitle("Literary Devices");
                 literaryDevicesGrid.add(submitButton, 0, 6);
+                root.getChildren().add(literaryDevicesGrid);
                 break;
             } 
             case "Techniques" : {
-                // Stage techniquesWindow = new Stage();
-                techniquesWindow.setTitle("Techniques");
-                // window.setHeight(450);
-                // window.setWidth(250);
-
-                root.getChildren().add(techniquesGrid);
+                window.setTitle("Techniques");
                 techniquesGrid.add(submitButton, 0, 6);
+                root.getChildren().add(techniquesGrid);
                 break;
             } 
             case "Themes" : {
-                // Stage themesWindow = new Stage();
-                themesWindow.setTitle("Themes");
-                // window.setHeight(450);
-                // window.setWidth(250);
-
-                root.getChildren().add(themesGrid);
+                window.setTitle("Themes");
                 themesGrid.add(submitButton, 0, 6);
+                root.getChildren().add(themesGrid);
                 break;
             } 
             case "Important Quotes" : {
-                // Stage importantQuotesWindow = new Stage();
-                importantQuotesWindow.setTitle("Important Quotes");
-                // window.setHeight(450);
-                // window.setWidth(250);
-
-                root.getChildren().add(importantQuotesGrid);
+                window.setTitle("Important Quotes");
                 importantQuotesGrid.add(submitButton, 0, 6);
+                root.getChildren().add(importantQuotesGrid);
                 break;
             } 
             case "Plot Analysis" : {
-                // Stage plotAnalysisWindow = new Stage();
-                plotAnalysisWindow.setTitle("Plot Analysiss");
-                // window.setHeight(450);
-                // window.setWidth(250);
-
-                root.getChildren().add(plotAnalysisGrid);
+                window.setTitle("Plot Analysis");
                 plotAnalysisGrid.add(submitButton, 0, 6);
+                root.getChildren().add(plotAnalysisGrid);
                 break;
             } 
             case "Additional Notes" : {
-                // Stage additionalNotesWindow = new Stage();
-                additionalNotesWindow.setTitle("Additional Notes");
-                // window.setHeight(450);
-                // window.setWidth(250);
-
-                root.getChildren().add(additionalNotesGrid);
+                window.setTitle("Additional Notes");
                 additionalNotesGrid.add(submitButton, 0, 6);
+                root.getChildren().add(additionalNotesGrid);
                 break;
             }
         }
 
         window.setScene(scene2);
         window.show();
+
 
     }
 }

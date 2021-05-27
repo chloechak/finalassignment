@@ -127,8 +127,8 @@ class Characters extends scenes {
         characterGrid.setVgap(4);
         characterGrid.setHgap(10);
         characterGrid.setPadding(new Insets(5, 5, 5, 5));
-        // characterGrid.add(new Label("Page Number: "), 0, 1);
-        // characterGrid.add(pageNumber,0,2);
+        characterGrid.add(new Label("Page Number: "), 0, 1);
+        characterGrid.add(pageNumber, 1, 1);
         characterGrid.add(new Label("Character: "), 0, 3);
         characterGrid.add(character, 1, 2, 3, 2);
         characterGrid.add(new Label("Character Detail: "), 0, 4);

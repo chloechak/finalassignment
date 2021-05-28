@@ -9,7 +9,7 @@
             "name": "Launch with Arguments Prompt",
             "request": "launch",
             "mainClass": "",
-            "vmArgs": "--module-path \"C:\\Users\\Chloe Chak\\Desktop\\javafx-sdk-11.0.2\\lib\" --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path \"/Users/lakysha/Downloads/javafx-sdk-11.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
         },
         {
             "type": "java",
@@ -22,35 +22,77 @@
             "name": "Launch chloec",
             "request": "launch",
             "mainClass": "chloec",
-            "projectName": "finalassignment_e0ad0111"
+            "projectName": "finalassignment_3e7e7de7"
         },
         {
             "type": "java",
             "name": "Launch chloeh",
             "request": "launch",
             "mainClass": "chloeh",
-            "projectName": "finalassignment_e0ad0111"
+            "projectName": "finalassignment_3e7e7de7"
         },
         {
             "type": "java",
             "name": "Launch comboBox",
             "request": "launch",
             "mainClass": "comboBox",
-            "projectName": "finalassignment_e0ad0111"
+            "projectName": "finalassignment_3e7e7de7"
+        },
+        {
+            "type": "java",
+            "name": "Launch file",
+            "request": "launch",
+            "mainClass": "file",
+            "projectName": "finalassignment_3e7e7de7"
+        },
+        {
+            "type": "java",
+            "name": "Launch idek",
+            "request": "launch",
+            "mainClass": "idek",
+            "projectName": "finalassignment_3e7e7de7"
         },
         {
             "type": "java",
             "name": "Launch lakysha",
             "request": "launch",
             "mainClass": "lakysha",
-            "projectName": "finalassignment_e0ad0111"
+            "projectName": "finalassignment_3e7e7de7"
+        },
+        {
+            "type": "java",
+            "name": "Launch newNoteApp",
+            "request": "launch",
+            "mainClass": "newNoteApp",
+            "projectName": "finalassignment_3e7e7de7"
+        },
+        {
+            "type": "java",
+            "name": "Launch newcodesample",
+            "request": "launch",
+            "mainClass": "newcodesample",
+            "projectName": "finalassignment_3e7e7de7"
+        },
+        {
+            "type": "java",
+            "name": "Launch scenes",
+            "request": "launch",
+            "mainClass": "scenes",
+            "projectName": "finalassignment_3e7e7de7"
         },
         {
             "type": "java",
             "name": "Launch testing",
             "request": "launch",
             "mainClass": "testing",
-            "projectName": "finalassignment_e0ad0111"
+            "projectName": "finalassignment_3e7e7de7"
+        },
+        {
+            "type": "java",
+            "name": "Launch tryingtoreadafile",
+            "request": "launch",
+            "mainClass": "tryingtoreadafile",
+            "projectName": "finalassignment_3e7e7de7"
         }
     ]
 }

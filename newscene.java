@@ -257,12 +257,19 @@ class Characters extends scenes {
                 window.setTitle("Characters");
                 characterGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
-                 File writeFile = new File("characters.csv");
+                File writeFile = new File("characters.csv");
                     try {
-                    //  FileWriter fileWriter = new FileWriter(writeFile);
-                       // BufferedWriter bufWriter = new BufferedWriter(fileWriter);
                         PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                        pw.write(pageNumberC.getText()+","); 
+                        pw.write(character.getText()+",");
                         pw.write(detailText.getText());
+                        if (detailText.getText().isEmpty())
+                        {
+                        selected1.setText("Please enter character detail");
+                        }
+                        else {
+                        selected1.setText("success");
+                        }
                         pw.println();
                         pw.flush();
                         pw.close();
@@ -271,13 +278,6 @@ class Characters extends scenes {
                     }
                     }
                     );
-                    // if (detailText.getText().isEmpty())
-                    // {
-                    // labelresponse.setText("The field cannot be left blank. You must enter in a name");
-                    // }
-                    // else 
-                    // labelresponse.setText("success" );
-                   
                     root.getChildren().add(characterGrid);
                    
                     break;
@@ -368,7 +368,6 @@ class Characters extends scenes {
                     File writeFile = new File("plotAnalysis.csv");
                     try {
                         FileWriter bufWriter = new FileWriter(writeFile);
-                       // BufferedWriter bufWriter = new BufferedWriter(fileWriter);
                         bufWriter.write(detailText.getText());
                         bufWriter.flush();
                         bufWriter.close();
@@ -396,11 +395,6 @@ class Characters extends scenes {
                     }
                     }
                     );
-                    if ((detailText.getText() != null && !detailText.getText().isEmpty())) {
-                        selected1.setText("thank you for your comment!");
-                    } else {
-                        selected1.setText("You have not left a comment.");
-                    }
                 root.getChildren().add(additionalNotesGrid);
                 break;
             }
@@ -412,114 +406,114 @@ class Characters extends scenes {
 
     }
 }
-class scenes3 extends scenes {
-    private SimpleStringProperty pageNumber, Topic, Description;
+// class scenes3 extends scenes {
+//     private SimpleStringProperty pageNumber, Topic, Description;
 
-    String getPageNumber() {
-        return pageNumber.get();
-    }
+//     String getPageNumber() {
+//         return pageNumber.get();
+//     }
 
-    String getTopicrName() {
-        return Topic.get();
-    }
+//     String getTopicrName() {
+//         return Topic.get();
+//     }
 
-    String getDescription() {
-        return Description.get();
-    }
+//     String getDescription() {
+//         return Description.get();
+//     }
     
-    public void Record(String pageNumber, String Topic, String Description) {
-        this.pageNumber = new SimpleStringProperty(pageNumber);
-        this.Topic = new SimpleStringProperty(Topic);
-        this.Description = new SimpleStringProperty(Description);
+//     public void Record(String pageNumber, String Topic, String Description) {
+//         this.pageNumber = new SimpleStringProperty(pageNumber);
+//         this.Topic = new SimpleStringProperty(Topic);
+//         this.Description = new SimpleStringProperty(Description);
     
-    }
+//     }
 
-    private final static TableView<Record> tableView = new TableView<>();
-    private final static ObservableList<Record> dataList = FXCollections.observableArrayList();
+//     private final static TableView<Record> tableView = new TableView<>();
+//     private final static ObservableList<Record> dataList = FXCollections.observableArrayList();
 
-    public static void display (String value) { 
-        Stage window2 = new Stage();
-        Scene scene3 = new Scene(new Group(), 850, 450);
+//     public static void display (String value) { 
+//         Stage window2 = new Stage();
+//         Scene scene3 = new Scene(new Group(), 850, 450);
 
-        // Character read notes scene 
-        TableColumn columnA1 = new TableColumn("Page Number");
-        columnA1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
+//         // Character read notes scene 
+//         TableColumn columnA1 = new TableColumn("Page Number");
+//         columnA1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
  
-        TableColumn columnA2 = new TableColumn("Topic");
-        columnA2.setCellValueFactory(new PropertyValueFactory<>("Topic"));
+//         TableColumn columnA2 = new TableColumn("Topic");
+//         columnA2.setCellValueFactory(new PropertyValueFactory<>("Topic"));
  
-        TableColumn columnA3 = new TableColumn("Details");
-        columnA3.setCellValueFactory(new PropertyValueFactory<>("Details"));
+//         TableColumn columnA3 = new TableColumn("Details");
+//         columnA3.setCellValueFactory(new PropertyValueFactory<>("Details"));
 
-        // // Literary Devices read notes scene 
-        // TableColumn columnB1 = new TableColumn("Page Number");
-        // columnB1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
+//         // // Literary Devices read notes scene 
+//         // TableColumn columnB1 = new TableColumn("Page Number");
+//         // columnB1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
  
-        // TableColumn columnB2 = new TableColumn("Literary Device");
-        // columnB2.setCellValueFactory(new PropertyValueFactory<>("Literary Device"));
+//         // TableColumn columnB2 = new TableColumn("Literary Device");
+//         // columnB2.setCellValueFactory(new PropertyValueFactory<>("Literary Device"));
  
-        // TableColumn columnB3 = new TableColumn("Explanation");
-        // columnB3.setCellValueFactory(new PropertyValueFactory<>("Explanation"));
+//         // TableColumn columnB3 = new TableColumn("Explanation");
+//         // columnB3.setCellValueFactory(new PropertyValueFactory<>("Explanation"));
 
-        // // Techniques read notes scene 
-        // TableColumn columC1 = new TableColumn("Page Number");
-        // columnA1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
+//         // // Techniques read notes scene 
+//         // TableColumn columC1 = new TableColumn("Page Number");
+//         // columnA1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
  
-        // TableColumn columnC2 = new TableColumn("Character Name");
-        // columnA2.setCellValueFactory(new PropertyValueFactory<>("Character Name"));
+//         // TableColumn columnC2 = new TableColumn("Character Name");
+//         // columnA2.setCellValueFactory(new PropertyValueFactory<>("Character Name"));
  
-        // TableColumn columnC3 = new TableColumn("Character Notes");
-        // columnA3.setCellValueFactory(new PropertyValueFactory<>("Character Notes"));
+//         // TableColumn columnC3 = new TableColumn("Character Notes");
+//         // columnA3.setCellValueFactory(new PropertyValueFactory<>("Character Notes"));
 
-        tableView.setItems(dataList);
-        Group root = (Group)scene3.getRoot();
+//         tableView.setItems(dataList);
+//         Group root = (Group)scene3.getRoot();
 
 
-        switch (value) {
-            case "Characters" : {
-                tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-                root.getChildren().add(tableView);
+//         switch (value) {
+//             case "Characters" : {
+//                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
+//                 root.getChildren().add(tableView);
 
-                break;
-            }
-            case "Literary Devices" : {
-                tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-                root.getChildren().add(tableView);
+//                 break;
+//             }
+//             case "Literary Devices" : {
+//                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
+//                 root.getChildren().add(tableView);
 
-                break;
-            } 
-            case "Techniques" : {
-                tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-                root.getChildren().add(tableView);
+//                 break;
+//             } 
+//             case "Techniques" : {
+//                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
+//                 root.getChildren().add(tableView);
 
-                break;
-            } 
-            case "Themes" : {
-                tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-                root.getChildren().add(tableView);
+//                 break;
+//             } 
+//             case "Themes" : {
+//                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
+//                 root.getChildren().add(tableView);
 
-                break;
-            } 
-            case "Important Quotes" : {
-                tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-                root.getChildren().add(tableView);
+//                 break;
+//             } 
+//             case "Important Quotes" : {
+//                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
+//                 root.getChildren().add(tableView);
 
-                break;
-            } 
-            case "Plot Analysis" : {
-                tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-                root.getChildren().add(tableView);
+//                 break;
+//             } 
+//             case "Plot Analysis" : {
+//                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
+//                 root.getChildren().add(tableView);
 
-                break;
-            } 
-            case "Additional Notes" : {
-                tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-                root.getChildren().add(tableView);
+//                 break;
+//             } 
+//             case "Additional Notes" : {
+//                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
+//                 root.getChildren().add(tableView);
 
-                break;
-            }
-        }
-        window2.setScene(scene3);
-        window2.show();
-    }
-}
+//                 break;
+//             }
+//         }
+//         window2.setScene(scene3);
+//         window2.show();
+//     }
+// }

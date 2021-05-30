@@ -1,6 +1,7 @@
 import java.io.BufferedWriter;
 import java.io.File;
 import javafx.application.Application;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -19,6 +20,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -263,19 +265,23 @@ class Characters extends scenes {
                 window.setTitle("Characters");
                 characterGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                if(!pageNumberC.getText().isEmpty()&&!character.getText().isEmpty()&&!detailText.getText().isEmpty()){
                 File writeFile = new File("characters.csv");
                     try {
                         PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
                         pw.write(pageNumberC.getText()+","); 
                         pw.write(character.getText()+",");
                         pw.write(detailText.getText());
-                        error(detailText,pageNumberC,character,charactersLabel); 
                         pw.println();
                         pw.flush();
                         pw.close();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                }
+                else{
+                    error(detailText,pageNumberC,character,charactersLabel); 
+                }
                     }
                     );
                     root.getChildren().add(characterGrid);
@@ -288,7 +294,9 @@ class Characters extends scenes {
                 window.setTitle("Literary Devices");
                 literaryDevicesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
-                    File writeFile = new File("literaryDevices.csv");
+                   
+                    if(!explanation.getText().isEmpty()&&!pageNumberL.getText().isEmpty()&&!literaryDevices.getText().isEmpty()){
+                        File writeFile = new File("literaryDevices.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
                             pw.write(pageNumberL.getText()+","); 
@@ -301,6 +309,10 @@ class Characters extends scenes {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                    }
+                    else{
+                        error(explanation,pageNumberL,literaryDevices, literaryLabel);  
+                    }
                         }
                         );
                 root.getChildren().add(literaryDevicesGrid);
@@ -310,13 +322,13 @@ class Characters extends scenes {
                 window.setTitle("Techniques");
                 techniquesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(!pageNumberTech.getText().isEmpty()&&!techniques.getText().isEmpty()&&!impact.getText().isEmpty()){
                     File writeFile = new File("techniques.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
                             pw.write(pageNumberTech.getText()+","); 
                             pw.write(techniques.getText()+",");
                             pw.write(impact.getText());
-                            error(impact,pageNumberTech,techniques,techniqueLabel); 
                             pw.println();
                             pw.flush();
                             pw.close();
@@ -324,6 +336,11 @@ class Characters extends scenes {
                             e.printStackTrace();
                         }
                         }
+                        else{
+                            error(impact,pageNumberTech,techniques,techniqueLabel); 
+
+                        }
+                    }
                         );
                 root.getChildren().add(techniquesGrid);
                 break;
@@ -332,13 +349,13 @@ class Characters extends scenes {
                 window.setTitle("Themes");
                 themesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(!pageNumberTheme.getText().isEmpty()&&!themes.getText().isEmpty()&&!implied.getText().isEmpty()){
                     File writeFile = new File("themes.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
                             pw.write(pageNumberTheme.getText()+","); 
                             pw.write(themes.getText()+",");
                             pw.write(implied.getText());
-                            error(implied,pageNumberTheme,themes,themesLabel); 
                             pw.println();
                             pw.flush();
                             pw.close();
@@ -346,6 +363,10 @@ class Characters extends scenes {
                             e.printStackTrace();
                         }
                         }
+                        else{
+                            error(implied,pageNumberTheme,themes,themesLabel);  
+                        }
+                    }
                         );
                 root.getChildren().add(themesGrid);
                 break;
@@ -354,13 +375,13 @@ class Characters extends scenes {
                 window.setTitle("Important Quotes");
                 importantQuotesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(!pageNumberQ.getText().isEmpty()&&!importantQuotes.getText().isEmpty()&&!quoteExplanation.getText().isEmpty()){
                     File writeFile = new File("importantQuotes.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
                             pw.write(pageNumberQ.getText()+","); 
                             pw.write(importantQuotes.getText()+",");
                             pw.write(quoteExplanation.getText());
-                            error(quoteExplanation,pageNumberQ,importantQuotes,quotesLabel); 
                             pw.println();
                             pw.flush();
                             pw.close();
@@ -368,6 +389,10 @@ class Characters extends scenes {
                             e.printStackTrace();
                         }
                         }
+                        else{
+                            error(quoteExplanation,pageNumberQ,importantQuotes,quotesLabel); 
+                        }
+                    }
                         );
                 root.getChildren().add(importantQuotesGrid);
             
@@ -377,13 +402,13 @@ class Characters extends scenes {
                 window.setTitle("Plot Analysis");
                 plotAnalysisGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(!pageNumberP.getText().isEmpty()&&!plotAnalysis.getText().isEmpty()&&!analysisText.getText().isEmpty()){
                     File writeFile = new File("plotAnalysis.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
                             pw.write(pageNumberP.getText()+","); 
                             pw.write(plotAnalysis.getText()+",");
                             pw.write(analysisText.getText());
-                            error(analysisText,pageNumberP,plotAnalysis,plotLabel); 
                             pw.println();
                             pw.flush();
                             pw.close();
@@ -391,6 +416,10 @@ class Characters extends scenes {
                             e.printStackTrace();
                         }
                         }
+                        else{
+                            error(analysisText,pageNumberP,plotAnalysis,plotLabel); 
+                        }
+                    }
                         );
                 root.getChildren().add(plotAnalysisGrid);
                 break;
@@ -399,13 +428,13 @@ class Characters extends scenes {
                 window.setTitle("Additional Notes");
                 additionalNotesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                if(!pageNumberA.getText().isEmpty()&&!additionalNotes.getText().isEmpty()&&!notes.getText().isEmpty()){
                     File writeFile = new File("additionalNotes.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
                             pw.write(pageNumberA.getText()+","); 
                             pw.write(additionalNotes.getText()+",");
                             pw.write(notes.getText());
-                            error(notes,pageNumberA,additionalNotes,additonLabel); 
                             pw.println();
                             pw.flush();
                             pw.close();
@@ -413,6 +442,10 @@ class Characters extends scenes {
                             e.printStackTrace();
                         }
                         }
+                        else{
+                            error(notes,pageNumberA,additionalNotes,additonLabel); 
+                        }
+                    }
                         );
                 root.getChildren().add(additionalNotesGrid);
                 break;
@@ -431,7 +464,7 @@ class Characters extends scenes {
         selected1.setText("Please complete all fields");
         }
         else {
-        selected1.setText("success");
+        selected1.setText("success, saved in csv file");
         }
     }
 }
@@ -456,8 +489,9 @@ class Characters extends scenes {
 //         this.Description = new SimpleStringProperty(Description);
     
 //     }
+// }
 
-//     private final static TableView<Record> tableView = new TableView<>();
+//     private final static TableView <Record> tableView = new TableView<>();
 //     private final static ObservableList<Record> dataList = FXCollections.observableArrayList();
 
 //     public static void display (String value) { 
@@ -474,25 +508,25 @@ class Characters extends scenes {
 //         TableColumn columnA3 = new TableColumn("Details");
 //         columnA3.setCellValueFactory(new PropertyValueFactory<>("Details"));
 
-//         // // Literary Devices read notes scene 
-//         // TableColumn columnB1 = new TableColumn("Page Number");
-//         // columnB1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
+//         // Literary Devices read notes scene 
+//         TableColumn columnB1 = new TableColumn("Page Number");
+//         columnB1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
  
-//         // TableColumn columnB2 = new TableColumn("Literary Device");
-//         // columnB2.setCellValueFactory(new PropertyValueFactory<>("Literary Device"));
+//         TableColumn columnB2 = new TableColumn("Literary Device");
+//         columnB2.setCellValueFactory(new PropertyValueFactory<>("Literary Device"));
  
-//         // TableColumn columnB3 = new TableColumn("Explanation");
-//         // columnB3.setCellValueFactory(new PropertyValueFactory<>("Explanation"));
+//         TableColumn columnB3 = new TableColumn("Explanation");
+//         columnB3.setCellValueFactory(new PropertyValueFactory<>("Explanation"));
 
-//         // // Techniques read notes scene 
-//         // TableColumn columC1 = new TableColumn("Page Number");
-//         // columnA1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
+//         // Techniques read notes scene 
+//         TableColumn columC1 = new TableColumn("Page Number");
+//         columnA1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
  
-//         // TableColumn columnC2 = new TableColumn("Character Name");
-//         // columnA2.setCellValueFactory(new PropertyValueFactory<>("Character Name"));
+//         TableColumn columnC2 = new TableColumn("Character Name");
+//         columnA2.setCellValueFactory(new PropertyValueFactory<>("Character Name"));
  
-//         // TableColumn columnC3 = new TableColumn("Character Notes");
-//         // columnA3.setCellValueFactory(new PropertyValueFactory<>("Character Notes"));
+//         TableColumn columnC3 = new TableColumn("Character Notes");
+//         columnA3.setCellValueFactory(new PropertyValueFactory<>("Character Notes"));
 
 //         tableView.setItems(dataList);
 //         Group root = (Group)scene3.getRoot();

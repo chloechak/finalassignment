@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -34,6 +33,7 @@ public class newscene extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+  
     
     @Override
     public void start(Stage primaryStage) {
@@ -146,8 +146,13 @@ class Characters extends scenes {
         TextArea notes = new TextArea ("");
 
         Button submitButton = new Button ("Submit");
-        Label selected1 = new Label();
-     
+        Label charactersLabel=new Label();
+        Label literaryLabel= new Label();
+        Label techniqueLabel = new Label();
+        Label themesLabel = new Label(); 
+        Label quotesLabel = new Label();
+        Label plotLabel = new Label();
+        Label additonLabel = new Label();
         // characters grid
         GridPane characterGrid = new GridPane();
         characterGrid.setVgap(4);
@@ -159,7 +164,7 @@ class Characters extends scenes {
         characterGrid.add(character, 1, 2, 3, 2);
         characterGrid.add(new Label("Character Detail: "), 0, 4);
         characterGrid.add(detailText, 0, 5, 3, 1); 
-        characterGrid.add(selected1, 6, 7);
+        characterGrid.add(charactersLabel, 6, 7);
     
 
 
@@ -174,7 +179,8 @@ class Characters extends scenes {
         literaryDevicesGrid.add(literaryDevices, 1, 2, 3, 2);
         literaryDevicesGrid.add(new Label("Explanation: "), 0, 4);
         literaryDevicesGrid.add(explanation, 0, 5, 3, 1);   
-          
+        literaryDevicesGrid.add(literaryLabel, 6, 7); 
+        
         
 
         // techniques grid
@@ -188,7 +194,7 @@ class Characters extends scenes {
         techniquesGrid.add(techniques, 1, 2, 3, 2);
         techniquesGrid.add(new Label("How it was used/Impact: "), 0, 4);
         techniquesGrid.add(impact, 0, 5, 3, 1); 
-            
+        techniquesGrid.add(techniqueLabel, 6, 7);
         
 
         // themes grid
@@ -202,7 +208,7 @@ class Characters extends scenes {
         themesGrid.add(themes, 1, 2, 3, 2);
         themesGrid.add(new Label("How is it Implied?: "), 0, 4);
         themesGrid.add(implied, 0, 5, 3, 1);             
-
+        themesGrid.add(themesLabel, 6, 7);
 
         // important quotes grid
         GridPane importantQuotesGrid = new GridPane();
@@ -215,7 +221,7 @@ class Characters extends scenes {
         importantQuotesGrid.add(importantQuotes, 1, 2, 3, 2);
         importantQuotesGrid.add(new Label("Quote Explanation: "), 0, 4);
         importantQuotesGrid.add(quoteExplanation, 0, 5, 3, 1);  
-           
+        importantQuotesGrid.add(quotesLabel, 6, 7);   
         
 
         // plot analysis grid
@@ -229,7 +235,7 @@ class Characters extends scenes {
         plotAnalysisGrid.add(plotAnalysis, 1, 2, 3, 2);
         plotAnalysisGrid.add(new Label("Plot Analysis: "), 0, 4);
         plotAnalysisGrid.add(analysisText, 0, 5, 3, 1);     
-        
+        plotAnalysisGrid.add(plotLabel, 6, 7);
         
 
         // additional notes grid
@@ -243,7 +249,7 @@ class Characters extends scenes {
         additionalNotesGrid.add(additionalNotes, 1, 2, 3, 2);
         additionalNotesGrid.add(new Label("Additional Note: "), 0, 4);
         additionalNotesGrid.add(notes, 0, 5, 3, 1); 
-
+        additionalNotesGrid.add(additonLabel, 6, 7);
 
 
 
@@ -263,13 +269,7 @@ class Characters extends scenes {
                         pw.write(pageNumberC.getText()+","); 
                         pw.write(character.getText()+",");
                         pw.write(detailText.getText());
-                        if (detailText.getText().isEmpty())
-                        {
-                        selected1.setText("Please enter character detail");
-                        }
-                        else {
-                        selected1.setText("success");
-                        }
+                        error(detailText,pageNumberC,character,charactersLabel); 
                         pw.println();
                         pw.flush();
                         pw.close();
@@ -288,18 +288,21 @@ class Characters extends scenes {
                 window.setTitle("Literary Devices");
                 literaryDevicesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
-                    File writeFile = new File("setting.csv");
-                    try {
-                        FileWriter bufWriter = new FileWriter(writeFile);
-                       // BufferedWriter bufWriter = new BufferedWriter(fileWriter);
-                        bufWriter.write(detailText.getText());
-                        bufWriter.flush();
-                        bufWriter.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    }
-                    );
+                    File writeFile = new File("literaryDevices.csv");
+                        try {
+                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                            pw.write(pageNumberL.getText()+","); 
+                            pw.write(literaryDevices.getText()+",");
+                            pw.write(explanation.getText());
+                            error(explanation,pageNumberL,literaryDevices, literaryLabel); 
+                            pw.println();
+                            pw.flush();
+                            pw.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        }
+                        );
                 root.getChildren().add(literaryDevicesGrid);
                 break;
             } 
@@ -307,18 +310,21 @@ class Characters extends scenes {
                 window.setTitle("Techniques");
                 techniquesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
-                  File writeFile = new File("Techniques.csv");
-                    try {
-                        FileWriter bufWriter = new FileWriter(writeFile);
-                       // BufferedWriter bufWriter = new BufferedWriter(fileWriter);
-                        bufWriter.write(detailText.getText());
-                        bufWriter.flush();
-                        bufWriter.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    }
-                    );
+                    File writeFile = new File("techniques.csv");
+                        try {
+                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                            pw.write(pageNumberTech.getText()+","); 
+                            pw.write(techniques.getText()+",");
+                            pw.write(impact.getText());
+                            error(impact,pageNumberTech,techniques,techniqueLabel); 
+                            pw.println();
+                            pw.flush();
+                            pw.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        }
+                        );
                 root.getChildren().add(techniquesGrid);
                 break;
             } 
@@ -327,17 +333,20 @@ class Characters extends scenes {
                 themesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
                     File writeFile = new File("themes.csv");
-                    try {
-                        FileWriter bufWriter = new FileWriter(writeFile);
-                       // BufferedWriter bufWriter = new BufferedWriter(fileWriter);
-                        bufWriter.write(detailText.getText());
-                        bufWriter.flush();
-                        bufWriter.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    }
-                    );
+                        try {
+                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                            pw.write(pageNumberTheme.getText()+","); 
+                            pw.write(themes.getText()+",");
+                            pw.write(implied.getText());
+                            error(implied,pageNumberTheme,themes,themesLabel); 
+                            pw.println();
+                            pw.flush();
+                            pw.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        }
+                        );
                 root.getChildren().add(themesGrid);
                 break;
             } 
@@ -345,18 +354,21 @@ class Characters extends scenes {
                 window.setTitle("Important Quotes");
                 importantQuotesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
-                    File writeFile = new File("quotes.csv");
-                    try {
-                        FileWriter bufWriter = new FileWriter(writeFile);
-                       // BufferedWriter bufWriter = new BufferedWriter(fileWriter);
-                        bufWriter.write(detailText.getText());
-                        bufWriter.flush();
-                        bufWriter.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    }
-                    );
+                    File writeFile = new File("importantQuotes.csv");
+                        try {
+                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                            pw.write(pageNumberQ.getText()+","); 
+                            pw.write(importantQuotes.getText()+",");
+                            pw.write(quoteExplanation.getText());
+                            error(quoteExplanation,pageNumberQ,importantQuotes,quotesLabel); 
+                            pw.println();
+                            pw.flush();
+                            pw.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        }
+                        );
                 root.getChildren().add(importantQuotesGrid);
             
                 break;
@@ -366,16 +378,20 @@ class Characters extends scenes {
                 plotAnalysisGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
                     File writeFile = new File("plotAnalysis.csv");
-                    try {
-                        FileWriter bufWriter = new FileWriter(writeFile);
-                        bufWriter.write(detailText.getText());
-                        bufWriter.flush();
-                        bufWriter.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    }
-                    );
+                        try {
+                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                            pw.write(pageNumberP.getText()+","); 
+                            pw.write(plotAnalysis.getText()+",");
+                            pw.write(analysisText.getText());
+                            error(analysisText,pageNumberP,plotAnalysis,plotLabel); 
+                            pw.println();
+                            pw.flush();
+                            pw.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        }
+                        );
                 root.getChildren().add(plotAnalysisGrid);
                 break;
             } 
@@ -383,18 +399,21 @@ class Characters extends scenes {
                 window.setTitle("Additional Notes");
                 additionalNotesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
-                    File writeFile = new File("AdditionalNotes.csv");
-                    try {
-                        FileWriter bufWriter = new FileWriter(writeFile);
-                       // BufferedWriter bufWriter = new BufferedWriter(fileWriter);
-                        bufWriter.write(detailText.getText());
-                        bufWriter.flush();
-                        bufWriter.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    }
-                    );
+                    File writeFile = new File("additionalNotes.csv");
+                        try {
+                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                            pw.write(pageNumberA.getText()+","); 
+                            pw.write(additionalNotes.getText()+",");
+                            pw.write(notes.getText());
+                            error(notes,pageNumberA,additionalNotes,additonLabel); 
+                            pw.println();
+                            pw.flush();
+                            pw.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        }
+                        );
                 root.getChildren().add(additionalNotesGrid);
                 break;
             }
@@ -404,6 +423,16 @@ class Characters extends scenes {
         window.show();
 
 
+    }
+
+    private static void error(TextArea textArea,TextField page, TextField topic, Label selected1) {
+        if (textArea.getText().isEmpty()||page.getText().isEmpty()||topic.getText().isEmpty())
+        {
+        selected1.setText("Please complete all fields");
+        }
+        else {
+        selected1.setText("success");
+        }
     }
 }
 // class scenes3 extends scenes {

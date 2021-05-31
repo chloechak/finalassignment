@@ -20,12 +20,9 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import javafx.scene.control.cell.PropertyValueFactory;
-
 import javax.swing.JOptionPane;
 import javax.swing.text.TableView;
 
@@ -155,6 +152,7 @@ class Characters extends scenes {
         Label quotesLabel = new Label();
         Label plotLabel = new Label();
         Label additonLabel = new Label();
+       
         // characters grid
         GridPane characterGrid = new GridPane();
         characterGrid.setVgap(4);
@@ -167,7 +165,7 @@ class Characters extends scenes {
         characterGrid.add(new Label("Character Detail: "), 0, 4);
         characterGrid.add(detailText, 0, 5, 3, 1); 
         characterGrid.add(charactersLabel, 6, 7);
-    
+        
 
 
         // literary devices grid
@@ -269,8 +267,8 @@ class Characters extends scenes {
                 File writeFile = new File("characters.csv");
                     try {
                         PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                        pw.write(pageNumberC.getText()+","); 
-                        pw.write(character.getText()+",");
+                        pw.write(pageNumberC.getText()+"|"); 
+                        pw.write(character.getText()+"|");
                         pw.write(detailText.getText());
                         pw.println();
                         pw.flush();
@@ -278,14 +276,13 @@ class Characters extends scenes {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                }
+                    }
                 else{
                     error(detailText,pageNumberC,character,charactersLabel); 
-                }
+                    }
                     }
                     );
                     root.getChildren().add(characterGrid);
-                   
                     break;
                 }
                 
@@ -299,25 +296,24 @@ class Characters extends scenes {
                         File writeFile = new File("literaryDevices.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberL.getText()+","); 
-                            pw.write(literaryDevices.getText()+",");
+                            pw.write(pageNumberL.getText()+"|"); 
+                            pw.write(literaryDevices.getText()+"|");
                             pw.write(explanation.getText());
-                            error(explanation,pageNumberL,literaryDevices, literaryLabel); 
                             pw.println();
                             pw.flush();
                             pw.close();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                    }
+                        }
                     else{
-                        error(explanation,pageNumberL,literaryDevices, literaryLabel);  
-                    }
+                         error(explanation,pageNumberL,literaryDevices, literaryLabel);  
+                        }
                         }
                         );
                 root.getChildren().add(literaryDevicesGrid);
                 break;
-            } 
+                        } 
             case "Techniques" : {
                 window.setTitle("Techniques");
                 techniquesGrid.add(submitButton, 0, 6);
@@ -326,8 +322,8 @@ class Characters extends scenes {
                     File writeFile = new File("techniques.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberTech.getText()+","); 
-                            pw.write(techniques.getText()+",");
+                            pw.write(pageNumberTech.getText()+"|"); 
+                            pw.write(techniques.getText()+"|");
                             pw.write(impact.getText());
                             pw.println();
                             pw.flush();
@@ -340,11 +336,11 @@ class Characters extends scenes {
                             error(impact,pageNumberTech,techniques,techniqueLabel); 
 
                         }
-                    }
+                        }
                         );
                 root.getChildren().add(techniquesGrid);
                 break;
-            } 
+                        } 
             case "Themes" : {
                 window.setTitle("Themes");
                 themesGrid.add(submitButton, 0, 6);
@@ -353,8 +349,8 @@ class Characters extends scenes {
                     File writeFile = new File("themes.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberTheme.getText()+","); 
-                            pw.write(themes.getText()+",");
+                            pw.write(pageNumberTheme.getText()+"|"); 
+                            pw.write(themes.getText()+"|");
                             pw.write(implied.getText());
                             pw.println();
                             pw.flush();
@@ -366,11 +362,11 @@ class Characters extends scenes {
                         else{
                             error(implied,pageNumberTheme,themes,themesLabel);  
                         }
-                    }
+                        }
                         );
                 root.getChildren().add(themesGrid);
                 break;
-            } 
+                        } 
             case "Important Quotes" : {
                 window.setTitle("Important Quotes");
                 importantQuotesGrid.add(submitButton, 0, 6);
@@ -379,8 +375,8 @@ class Characters extends scenes {
                     File writeFile = new File("importantQuotes.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberQ.getText()+","); 
-                            pw.write(importantQuotes.getText()+",");
+                            pw.write(pageNumberQ.getText()+"|"); 
+                            pw.write(importantQuotes.getText()+"|");
                             pw.write(quoteExplanation.getText());
                             pw.println();
                             pw.flush();
@@ -392,12 +388,12 @@ class Characters extends scenes {
                         else{
                             error(quoteExplanation,pageNumberQ,importantQuotes,quotesLabel); 
                         }
-                    }
+                        }
                         );
                 root.getChildren().add(importantQuotesGrid);
             
                 break;
-            } 
+                        } 
             case "Plot Analysis" : {
                 window.setTitle("Plot Analysis");
                 plotAnalysisGrid.add(submitButton, 0, 6);
@@ -406,8 +402,8 @@ class Characters extends scenes {
                     File writeFile = new File("plotAnalysis.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberP.getText()+","); 
-                            pw.write(plotAnalysis.getText()+",");
+                            pw.write(pageNumberP.getText()+"|"); 
+                            pw.write(plotAnalysis.getText()+"|");
                             pw.write(analysisText.getText());
                             pw.println();
                             pw.flush();
@@ -419,11 +415,11 @@ class Characters extends scenes {
                         else{
                             error(analysisText,pageNumberP,plotAnalysis,plotLabel); 
                         }
-                    }
+                        }
                         );
                 root.getChildren().add(plotAnalysisGrid);
                 break;
-            } 
+                        } 
             case "Additional Notes" : {
                 window.setTitle("Additional Notes");
                 additionalNotesGrid.add(submitButton, 0, 6);
@@ -432,8 +428,8 @@ class Characters extends scenes {
                     File writeFile = new File("additionalNotes.csv");
                         try {
                             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberA.getText()+","); 
-                            pw.write(additionalNotes.getText()+",");
+                            pw.write(pageNumberA.getText()+"|"); 
+                            pw.write(additionalNotes.getText()+"|");
                             pw.write(notes.getText());
                             pw.println();
                             pw.flush();
@@ -445,7 +441,7 @@ class Characters extends scenes {
                         else{
                             error(notes,pageNumberA,additionalNotes,additonLabel); 
                         }
-                    }
+                        }
                         );
                 root.getChildren().add(additionalNotesGrid);
                 break;

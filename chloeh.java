@@ -24,7 +24,7 @@ public class chloeh extends Application {
         
     }
 }
-class newNote extends App {
+class newNote extends Application {
     public static void display (String value) {
 
         Scene scene2 = new Scene(new Group(), 850, 450);
@@ -56,6 +56,15 @@ class newNote extends App {
         Button submitButton = new Button ("Submit");
 
         // characters grid
+
+        /**
+         * characters [] characterGrid = new characters [3];
+         * 
+         * for (int i = 0; i < 3; i++) {
+            characterGrid[i] = new character (pageNumber, character, detailText);
+            }
+        */
+
         GridPane characterGrid = new GridPane();
         characterGrid.setVgap(4);
         characterGrid.setHgap(10);

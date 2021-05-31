@@ -32,6 +32,8 @@ public class newscene extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
+  
   
     
     @Override
@@ -116,6 +118,8 @@ public class newscene extends Application {
 }
 
 class Characters extends scenes {
+    private static final TextArea quoteExplantion = null;
+
     public static void display (String value) {
         Stage window = new Stage();
         Scene scene2 = new Scene(new Group(), 850, 450);
@@ -265,18 +269,20 @@ class Characters extends scenes {
                 submitButton.setOnAction((ActionEvent event)->{
                 if(!pageNumberC.getText().isEmpty()&&!character.getText().isEmpty()&&!detailText.getText().isEmpty()){
                 File writeFile = new File("characters.csv");
-                    try {
-                        PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                        pw.write(pageNumberC.getText()+"|"); 
-                        pw.write(character.getText()+"|");
-                        pw.write(detailText.getText());
-                        pw.println();
-                        pw.flush();
-                        pw.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    }
+                writer(writeFile,pageNumberC,character,detailText);
+                }
+                    // try {
+                    //     PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                    //     pw.write(pageNumberC.getText()+"|"); 
+                    //     pw.write(character.getText()+"|");
+                    //     pw.write(detailText.getText());
+                    //     pw.println();
+                    //     pw.flush();
+                    //     pw.close();
+                    // } catch (IOException e) {
+                    //     e.printStackTrace();
+                    // }
+                    // }
                 else{
                     error(detailText,pageNumberC,character,charactersLabel); 
                     }
@@ -294,17 +300,18 @@ class Characters extends scenes {
                    
                     if(!explanation.getText().isEmpty()&&!pageNumberL.getText().isEmpty()&&!literaryDevices.getText().isEmpty()){
                         File writeFile = new File("literaryDevices.csv");
-                        try {
-                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberL.getText()+"|"); 
-                            pw.write(literaryDevices.getText()+"|");
-                            pw.write(explanation.getText());
-                            pw.println();
-                            pw.flush();
-                            pw.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        writer(writeFile,pageNumberL,literaryDevices,explanation);
+                        // try {
+                        //     PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                        //     pw.write(pageNumberL.getText()+"|"); 
+                        //     pw.write(literaryDevices.getText()+"|");
+                        //     pw.write(explanation.getText());
+                        //     pw.println();
+                        //     pw.flush();
+                        //     pw.close();
+                        // } catch (IOException e) {
+                        //     e.printStackTrace();
+                        // }
                         }
                     else{
                          error(explanation,pageNumberL,literaryDevices, literaryLabel);  
@@ -320,17 +327,18 @@ class Characters extends scenes {
                 submitButton.setOnAction((ActionEvent event)->{
                     if(!pageNumberTech.getText().isEmpty()&&!techniques.getText().isEmpty()&&!impact.getText().isEmpty()){
                     File writeFile = new File("techniques.csv");
-                        try {
-                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberTech.getText()+"|"); 
-                            pw.write(techniques.getText()+"|");
-                            pw.write(impact.getText());
-                            pw.println();
-                            pw.flush();
-                            pw.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    writer(writeFile,pageNumberTech,techniques,impact);
+                        // try {
+                        //     PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                        //     pw.write(pageNumberTech.getText()+"|"); 
+                        //     pw.write(techniques.getText()+"|");
+                        //     pw.write(impact.getText());
+                        //     pw.println();
+                        //     pw.flush();
+                        //     pw.close();
+                        // } catch (IOException e) {
+                        //     e.printStackTrace();
+                        // }
                         }
                         else{
                             error(impact,pageNumberTech,techniques,techniqueLabel); 
@@ -347,17 +355,18 @@ class Characters extends scenes {
                 submitButton.setOnAction((ActionEvent event)->{
                     if(!pageNumberTheme.getText().isEmpty()&&!themes.getText().isEmpty()&&!implied.getText().isEmpty()){
                     File writeFile = new File("themes.csv");
-                        try {
-                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberTheme.getText()+"|"); 
-                            pw.write(themes.getText()+"|");
-                            pw.write(implied.getText());
-                            pw.println();
-                            pw.flush();
-                            pw.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    writer(writeFile,pageNumberTheme,themes,implied);
+                        // try {
+                        //     PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                        //     pw.write(pageNumberTheme.getText()+"|"); 
+                        //     pw.write(themes.getText()+"|");
+                        //     pw.write(implied.getText());
+                        //     pw.println();
+                        //     pw.flush();
+                        //     pw.close();
+                        // } catch (IOException e) {
+                        //     e.printStackTrace();
+                        // }
                         }
                         else{
                             error(implied,pageNumberTheme,themes,themesLabel);  
@@ -373,17 +382,18 @@ class Characters extends scenes {
                 submitButton.setOnAction((ActionEvent event)->{
                     if(!pageNumberQ.getText().isEmpty()&&!importantQuotes.getText().isEmpty()&&!quoteExplanation.getText().isEmpty()){
                     File writeFile = new File("importantQuotes.csv");
-                        try {
-                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberQ.getText()+"|"); 
-                            pw.write(importantQuotes.getText()+"|");
-                            pw.write(quoteExplanation.getText());
-                            pw.println();
-                            pw.flush();
-                            pw.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    writer(writeFile,pageNumberQ,importantQuotes,quoteExplanation);
+                        // try {
+                        //     PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                        //     pw.write(pageNumberQ.getText()+"|"); 
+                        //     pw.write(importantQuotes.getText()+"|");
+                        //     pw.write(quoteExplanation.getText());
+                        //     pw.println();
+                        //     pw.flush();
+                        //     pw.close();
+                        // } catch (IOException e) {
+                        //     e.printStackTrace();
+                        // }
                         }
                         else{
                             error(quoteExplanation,pageNumberQ,importantQuotes,quotesLabel); 
@@ -399,18 +409,21 @@ class Characters extends scenes {
                 plotAnalysisGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
                     if(!pageNumberP.getText().isEmpty()&&!plotAnalysis.getText().isEmpty()&&!analysisText.getText().isEmpty()){
+                        
                     File writeFile = new File("plotAnalysis.csv");
-                        try {
-                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberP.getText()+"|"); 
-                            pw.write(plotAnalysis.getText()+"|");
-                            pw.write(analysisText.getText());
-                            pw.println();
-                            pw.flush();
-                            pw.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    writer(writeFile,pageNumberP,plotAnalysis,analysisText);
+
+                        // try {
+                        //     PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                        //     pw.write(pageNumberP.getText()+"|"); 
+                        //     pw.write(plotAnalysis.getText()+"|");
+                        //     pw.write(analysisText.getText());
+                        //     pw.println();
+                        //     pw.flush();
+                        //     pw.close();
+                        // } catch (IOException e) {
+                        //     e.printStackTrace();
+                        // }
                         }
                         else{
                             error(analysisText,pageNumberP,plotAnalysis,plotLabel); 
@@ -426,17 +439,19 @@ class Characters extends scenes {
                 submitButton.setOnAction((ActionEvent event)->{
                 if(!pageNumberA.getText().isEmpty()&&!additionalNotes.getText().isEmpty()&&!notes.getText().isEmpty()){
                     File writeFile = new File("additionalNotes.csv");
-                        try {
-                            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-                            pw.write(pageNumberA.getText()+"|"); 
-                            pw.write(additionalNotes.getText()+"|");
-                            pw.write(notes.getText());
-                            pw.println();
-                            pw.flush();
-                            pw.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    writer(writeFile,pageNumberA,additionalNotes,notes);
+
+                        // try {
+                        //     PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+                        //     pw.write(pageNumberA.getText()+"|"); 
+                        //     pw.write(additionalNotes.getText()+"|");
+                        //     pw.write(notes.getText());
+                        //     pw.println();
+                        //     pw.flush();
+                        //     pw.close();
+                        // } catch (IOException e) {
+                        //     e.printStackTrace();
+                        // }
                         }
                         else{
                             error(notes,pageNumberA,additionalNotes,additonLabel); 
@@ -463,7 +478,25 @@ class Characters extends scenes {
         selected1.setText("success, saved in csv file");
         }
     }
-}
+
+    private static void writer(File writeFile, TextField page, TextField topic, TextArea details) {
+          try {
+        PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+        pw.write(page.getText()+"|"); 
+        pw.write(topic.getText()+"|");
+        pw.write(details.getText());
+        pw.println();
+        pw.flush();
+        pw.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+            
+        }
+    
+    }
+
 // class scenes3 extends scenes {
 //     private SimpleStringProperty pageNumber, Topic, Description;
 
@@ -576,3 +609,4 @@ class Characters extends scenes {
 //         window2.show();
 //     }
 // }
+

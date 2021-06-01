@@ -466,7 +466,6 @@ class scene3 extends hello {
  
         tableView.setItems(dataList);
         Group root = (Group)scene3.getRoot();
- 
         columnA1.setPrefWidth(300);
         columnA2.setPrefWidth(300);
         columnA3.setPrefWidth(240);
@@ -476,14 +475,14 @@ class scene3 extends hello {
         tableView.getColumns().clear();
         switch (value) {
             case "Characters" : {
-                String CsvFile = "Characters.csv";
-                    String FieldDelimiter = ",";
+                String CsvFile = "characters.csv";
+                    String FieldDelimiter = "|";
      
-                    BufferedReader br; 
+                    
      
                     try {
      
-                        br = new BufferedReader(new FileReader(CsvFile)); 
+                        BufferedReader br = new BufferedReader(new FileReader(CsvFile)); 
      
                         String line; 
                         

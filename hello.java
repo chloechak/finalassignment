@@ -434,19 +434,20 @@ class idk extends hello {
 
     private static void writer(File writeFile, TextField page, TextField topic, TextArea details) {
         try {
-      PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
-      pw.write(page.getText()+"|"); 
-      pw.write(topic.getText()+"|");
-      pw.write(details.getText());
-      pw.println();
-      pw.flush();
-      pw.close();
-      }
-      catch (IOException e) {
+            PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+            pw.write(page.getText()+"/"); 
+            pw.write(topic.getText()+"/");
+            pw.write(details.getText());
+            pw.println();
+            pw.flush();
+            pw.close();
+        }
+
+        catch (IOException e) {
           e.printStackTrace();
-      }
+        }
       
-}
+    }
 }
 class scene3 extends hello {
 
@@ -525,7 +526,7 @@ class scene3 extends hello {
         switch (value) {
             case "Characters" : {
             String CsvFile = "Characters.csv";
-                String FieldDelimiter = "|";
+                String FieldDelimiter = "/";
     
                 BufferedReader br; 
     
@@ -537,7 +538,7 @@ class scene3 extends hello {
                     
                     while((line = br.readLine()) !=null) {
     
-                        String[] fields = line.split(FieldDelimiter); 
+                        String[] fields = line.split(FieldDelimiter, -1); 
                         Record record = new Record(fields[0], fields[1], fields[2]); 
                         System.out.println(fields[0]);
                         System.out.println(fields[1]);

@@ -1,15 +1,14 @@
-// I think it was missing some stuff
-
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
+//import javafx.beans.binding;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
@@ -30,8 +29,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.cell.PropertyValueFactory;
+ 
 import javax.swing.JOptionPane;
+import javafx.scene.control.TableView;
  
 public class hello extends Application {
     Scene scene1, scene2;
@@ -46,7 +48,7 @@ public class hello extends Application {
         window.setTitle("Note Taker");
         Scene scene1 = new Scene(new Group(), 950, 450);
  
-        //String categories[] = {"Characters", "Literary Devices", "Techniques", "Themes", "Important Quotes", "Plot Analysis", "Additional Notes"};
+        String categories[] = {"Characters", "Literary Devices", "Techniques", "Themes", "Important Quotes", "Plot Analysis", "Additional Notes"};
  
         
         Label selected2 = new Label();
@@ -56,11 +58,9 @@ public class hello extends Application {
         welcome.setY(130);      
         welcome.setText("Welcome to your note taker"); 
     
-        ComboBox<String> readNotes = new ComboBox<>();
-        readNotes.getItems().addAll("Characters", "Literary Devices", "Techniques", "Themes", "Important Quotes", "Plot Analysis", "Additional Notes");
+        ComboBox<String> readNotes = new ComboBox<>(FXCollections.observableArrayList(categories));
  
-        ComboBox<String> addNotes = new ComboBox<>();
-        addNotes.getItems().addAll("Characters", "Literary Devices", "Techniques", "Themes", "Important Quotes", "Plot Analysis", "Additional Notes");
+        ComboBox<String> addNotes = new ComboBox<>(FXCollections.observableArrayList(categories));
  
  
  
@@ -86,7 +86,7 @@ public class hello extends Application {
  
  
         
-        readNotes.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> scene3.display2(newValue));
+        readNotes.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> new scene3().display2(newValue));
  
  
         EventHandler<ActionEvent> addFile2 = new EventHandler<ActionEvent>() {
@@ -283,7 +283,7 @@ class idk extends hello {
  
 
  
-        Group root = (Group)scene2.getRoot();
+        //Group root = (Group)scene2.getRoot();
  
 
         additionalNotesGrid.add(additonLabel, 6, 7);
@@ -450,7 +450,7 @@ class idk extends hello {
 }
 class scene3 extends hello {
 
-    static class Record {
+    public class Record {
 
         private SimpleStringProperty pageNumber, Topic, Description;
 
@@ -461,19 +461,19 @@ class scene3 extends hello {
         // }
 
 
-        String getPageNumber() {
+        public String getPageNumber() {
             return pageNumber.get();
         }
 
-        String getTopicrName() {
+        public String getTopic() {
             return Topic.get();
         }
 
-        String getDescription() {
+        public String getDescription() {
             return Description.get();
         }
 
-        public Record(String pageNumber, String Topic, String Description) {
+        Record(String pageNumber, String Topic, String Description) {
             this.pageNumber = new SimpleStringProperty(pageNumber);
             this.Topic = new SimpleStringProperty(Topic);
             this.Description = new SimpleStringProperty(Description);
@@ -483,25 +483,37 @@ class scene3 extends hello {
     
  
     private final static TableView<Record> tableView = new TableView<>();
+
     private final static ObservableList<Record> dataList = FXCollections.observableArrayList();
  
-    public static void display2 (String value) { 
+    public void display2 (String value) { 
+
+        //String categories[] = {"Characters", "Literary Devices", "Techniques", "Themes", "Important Quotes", "Plot Analysis", "Additional Notes"};
+
         Stage window2 = new Stage();
         Scene scene3 = new Scene(new Group(), 850, 450);
+        //final ObservableList<Record> data = FXCollections.observableArrayList();  
+
+
+        // TextField searchField = new TextField();
+        // searchField.setPromptText("Search");
+        // searchField.setMaxWidth(200);
+
+
         
         TableColumn columnA1 = new TableColumn("Page Number");
-        columnA1.setCellValueFactory(new PropertyValueFactory<>("Page Number"));
+        columnA1.setCellValueFactory(new PropertyValueFactory<>("PageNumber"));
  
         TableColumn columnA2 = new TableColumn("Topic");
         columnA2.setCellValueFactory(new PropertyValueFactory<>("Topic"));
  
         TableColumn columnA3 = new TableColumn("Details");
-        columnA3.setCellValueFactory(new PropertyValueFactory<>("Details"));
+        columnA3.setCellValueFactory(new PropertyValueFactory<>("Description"));
  
  
         tableView.setItems(dataList);
         Group root = (Group)scene3.getRoot();
-
+ 
         columnA1.setPrefWidth(300);
         columnA2.setPrefWidth(300);
         columnA3.setPrefWidth(240);
@@ -509,163 +521,57 @@ class scene3 extends hello {
         tableView.setPrefHeight(440);
  
         tableView.getColumns().clear();
-        
-        switch (value) {
-
-            case "Characters" : {
-
-                String CsvFile = "characters.csv";
-                String FieldDelimiter = ",";
-     
-                    BufferedReader br; 
-     
-                    try {
-     
-                        br = new BufferedReader(new FileReader(CsvFile)); 
+        System.out.println(value);
         switch (value) {
             case "Characters" : {
-                String CsvFile = "characters.csv";
-                    String FieldDelimiter = "|";
-     
+            String CsvFile = "Characters.csv";
+                String FieldDelimiter = "|";
+    
+                BufferedReader br; 
+    
+                try {
+    
+                    br = new BufferedReader(new FileReader(CsvFile)); 
+    
+                    String line; 
                     
-     
-                    try {
-     
-                        BufferedReader br = new BufferedReader(new FileReader(CsvFile)); 
-     
-                        String line; 
-                        
-                        while((line = br.readLine()) !=null) {
-     
-                            String[] fields = line.split(FieldDelimiter, -1); 
-                            Record record = new Record(fields[0], fields[1], fields[2]); 
-                            dataList.add(record); 
-                        } 
-                        
- 
-                    }
-                    catch (FileNotFoundException ex) { 
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-                    }
-     
-                    catch (IOException ex) {
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-                    }
+                    while((line = br.readLine()) !=null) {
+    
+                        String[] fields = line.split(FieldDelimiter); 
+                        Record record = new Record(fields[0], fields[1], fields[2]); 
+                        System.out.println(fields[0]);
+                        System.out.println(fields[1]);
+                        System.out.println(fields[2]);
+
+                        dataList.add(record); 
+                    } 
+                }
+
+                catch (FileNotFoundException ex) { 
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                }
+    
+                catch (IOException ex) {
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             }
-
-            case "Literary Devices" : { 
-
-                String CsvFile = "literaryDevices.csv";
-                String FieldDelimiter = ",";
-     
-                    BufferedReader br; 
-     
-                    try {
-     
-                        br = new BufferedReader(new FileReader(CsvFile)); 
-     
-                        String line; 
-                        
-                        while((line = br.readLine()) !=null) {
-     
-                            String[] fields = line.split(FieldDelimiter, -1); 
-                            Record record = new Record(fields[0], fields[1], fields[2]); 
-                            dataList.add(record); 
-                        } 
-                        
- 
-                    }
-                    catch (FileNotFoundException ex) { 
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-                    }
-     
-                    catch (IOException ex) {
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-
             case "Literary Devices" : {
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
-            }
-
-            case "Techniques" : {
-
-                String CsvFile = "techniques.csv";
-                String FieldDelimiter = ",";
-     
-                    BufferedReader br; 
-     
-                    try {
-     
-                        br = new BufferedReader(new FileReader(CsvFile)); 
-     
-                        String line; 
-                        
-                        while((line = br.readLine()) !=null) {
-     
-                            String[] fields = line.split(FieldDelimiter, -1); 
-                            Record record = new Record(fields[0], fields[1], fields[2]); 
-                            dataList.add(record); 
-                        } 
-                        
- 
-                    }
-                    catch (FileNotFoundException ex) { 
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-                    }
-     
-                    catch (IOException ex) {
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
             } 
             case "Techniques" : {
-
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             } 
-
-            case "Themes" : {
-
-                String CsvFile = "themes.csv";
-                String FieldDelimiter = ",";
-     
-                    BufferedReader br; 
-     
-                    try {
-     
-                        br = new BufferedReader(new FileReader(CsvFile)); 
-     
-                        String line; 
-                        
-                        while((line = br.readLine()) !=null) {
-     
-                            String[] fields = line.split(FieldDelimiter, -1); 
-                            Record record = new Record(fields[0], fields[1], fields[2]); 
-                            dataList.add(record); 
-                        } 
-                        
- 
-                    }
-                    catch (FileNotFoundException ex) { 
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-                    }
-     
-                    catch (IOException ex) {
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-
             case "Themes" : {
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
@@ -673,114 +579,18 @@ class scene3 extends hello {
                 break;
             } 
             case "Important Quotes" : {
-
-
-                String CsvFile = "importantQuotes.csv";
-                String FieldDelimiter = ",";
-     
-                    BufferedReader br; 
-     
-                    try {
-     
-                        br = new BufferedReader(new FileReader(CsvFile)); 
-     
-                        String line; 
-                        
-                        while((line = br.readLine()) !=null) {
-     
-                            String[] fields = line.split(FieldDelimiter, -1); 
-                            Record record = new Record(fields[0], fields[1], fields[2]); 
-                            dataList.add(record); 
-                        } 
-                        
- 
-                    }
-                    catch (FileNotFoundException ex) { 
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-                    }
-     
-                    catch (IOException ex) {
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             } 
-
             case "Plot Analysis" : {
-
-                String CsvFile = "plotAnalysis.csv";
-                String FieldDelimiter = ",";
-     
-                    BufferedReader br; 
-     
-                    try {
-     
-                        br = new BufferedReader(new FileReader(CsvFile)); 
-     
-                        String line; 
-                        
-                        while((line = br.readLine()) !=null) {
-     
-                            String[] fields = line.split(FieldDelimiter, -1); 
-                            Record record = new Record(fields[0], fields[1], fields[2]); 
-                            dataList.add(record); 
-                        } 
-                        
- 
-                    }
-                    catch (FileNotFoundException ex) { 
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-                    }
-     
-                    catch (IOException ex) {
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-
-
-            case "Plot Analysis" : {
-
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().add(tableView);
  
                 break;
             } 
             case "Additional Notes" : {
-
-
-                String CsvFile = "additionalNotes.csv";
-                String FieldDelimiter = ",";
-     
-                    BufferedReader br; 
-     
-                    try {
-     
-                        br = new BufferedReader(new FileReader(CsvFile)); 
-     
-                        String line; 
-                        
-                        while((line = br.readLine()) !=null) {
-     
-                            String[] fields = line.split(FieldDelimiter, -1); 
-                            Record record = new Record(fields[0], fields[1], fields[2]); 
-                            dataList.add(record); 
-                        } 
-                        
- 
-                    }
-                    catch (FileNotFoundException ex) { 
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-                    }
-     
-                    catch (IOException ex) {
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-
-
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().add(tableView);
  
@@ -790,9 +600,4 @@ class scene3 extends hello {
         window2.setScene(scene3);
         window2.show();
     }
-
-   
 }
-
-}
-

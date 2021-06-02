@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": "..\\..\\..\\..\\..\\OneDrive\\Desktop\\New folder"
+		},
+		{
+			"name": "finalassignment-1",
+			"path": "..\\finalassignment-1"
+		}
+	],
+	"settings": {
+		"java.project.referencedLibraries": [
+			"lib/**/*.jar",
+			"c:\\Users\\thedb\\Downloads\\openjfx-16_windows-x64_bin-sdk\\javafx-sdk-16\\lib\\javafx-swt.jar",
+			"c:\\Users\\thedb\\Downloads\\openjfx-16_windows-x64_bin-sdk\\javafx-sdk-16\\lib\\javafx.web.jar",
+			"c:\\Users\\thedb\\Downloads\\openjfx-16_windows-x64_bin-sdk\\javafx-sdk-16\\lib\\javafx.swing.jar",
+			"c:\\Users\\thedb\\Downloads\\openjfx-16_windows-x64_bin-sdk\\javafx-sdk-16\\lib\\javafx.media.jar",
+			"c:\\Users\\thedb\\Downloads\\openjfx-16_windows-x64_bin-sdk\\javafx-sdk-16\\lib\\javafx.graphics.jar",
+			"c:\\Users\\thedb\\Downloads\\openjfx-16_windows-x64_bin-sdk\\javafx-sdk-16\\lib\\javafx.fxml.jar",
+			"c:\\Users\\thedb\\Downloads\\openjfx-16_windows-x64_bin-sdk\\javafx-sdk-16\\lib\\javafx.controls.jar",
+			"c:\\Users\\thedb\\Downloads\\openjfx-16_windows-x64_bin-sdk\\javafx-sdk-16\\lib\\javafx.base.jar"
+		]
+	}
+}

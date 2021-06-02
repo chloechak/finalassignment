@@ -1,3 +1,6 @@
+// I think it was missing some stuff
+
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -156,6 +159,7 @@ class idk extends hello {
         Label plotLabel = new Label();
         Label additonLabel = new Label();
        
+
         // characters grid
         GridPane characterGrid = new GridPane();
         characterGrid.setVgap(4);
@@ -167,8 +171,10 @@ class idk extends hello {
         characterGrid.add(character, 1, 2, 3, 2);
         characterGrid.add(new Label("Character Detail: "), 0, 4);
         characterGrid.add(detailText, 0, 5, 3, 1); 
+
         characterGrid.add(charactersLabel, 6, 7);
         
+
 
 
         // literary devices grid
@@ -182,9 +188,15 @@ class idk extends hello {
         literaryDevicesGrid.add(literaryDevices, 1, 2, 3, 2);
         literaryDevicesGrid.add(new Label("Explanation: "), 0, 4);
         literaryDevicesGrid.add(explanation, 0, 5, 3, 1);   
+
+          
+        
+ 
+
         literaryDevicesGrid.add(literaryLabel, 6, 7); 
         
         
+
 
         // techniques grid
         GridPane techniquesGrid = new GridPane();
@@ -197,6 +209,11 @@ class idk extends hello {
         techniquesGrid.add(techniques, 1, 2, 3, 2);
         techniquesGrid.add(new Label("How it was used/Impact: "), 0, 4);
         techniquesGrid.add(impact, 0, 5, 3, 1); 
+
+            
+        
+ 
+
         techniquesGrid.add(techniqueLabel, 6, 7);
         
 
@@ -211,6 +228,8 @@ class idk extends hello {
         themesGrid.add(themes, 1, 2, 3, 2);
         themesGrid.add(new Label("How is it Implied?: "), 0, 4);
         themesGrid.add(implied, 0, 5, 3, 1);             
+ 
+ 
         themesGrid.add(themesLabel, 6, 7);
 
         // important quotes grid
@@ -224,6 +243,9 @@ class idk extends hello {
         importantQuotesGrid.add(importantQuotes, 1, 2, 3, 2);
         importantQuotesGrid.add(new Label("Quote Explanation: "), 0, 4);
         importantQuotesGrid.add(quoteExplanation, 0, 5, 3, 1);  
+           
+        
+ 
         importantQuotesGrid.add(quotesLabel, 6, 7);   
         
 
@@ -238,9 +260,14 @@ class idk extends hello {
         plotAnalysisGrid.add(plotAnalysis, 1, 2, 3, 2);
         plotAnalysisGrid.add(new Label("Plot Analysis: "), 0, 4);
         plotAnalysisGrid.add(analysisText, 0, 5, 3, 1);     
+        
+        
+ 
+
         plotAnalysisGrid.add(plotLabel, 6, 7);
         
 
+ 
         // additional notes grid
         GridPane additionalNotesGrid = new GridPane();
         additionalNotesGrid.setVgap(4);
@@ -252,11 +279,19 @@ class idk extends hello {
         additionalNotesGrid.add(additionalNotes, 1, 2, 3, 2);
         additionalNotesGrid.add(new Label("Additional Note: "), 0, 4);
         additionalNotesGrid.add(notes, 0, 5, 3, 1); 
+ 
+ 
+
+ 
+        Group root = (Group)scene2.getRoot();
+ 
+
         additionalNotesGrid.add(additonLabel, 6, 7);
 
         Group root = (Group)scene2.getRoot();
 
 
+ 
  
  
         switch (value) {
@@ -466,6 +501,7 @@ class scene3 extends hello {
  
         tableView.setItems(dataList);
         Group root = (Group)scene3.getRoot();
+
         columnA1.setPrefWidth(300);
         columnA2.setPrefWidth(300);
         columnA3.setPrefWidth(240);
@@ -473,6 +509,19 @@ class scene3 extends hello {
         tableView.setPrefHeight(440);
  
         tableView.getColumns().clear();
+        
+        switch (value) {
+
+            case "Characters" : {
+
+                String CsvFile = "characters.csv";
+                String FieldDelimiter = ",";
+     
+                    BufferedReader br; 
+     
+                    try {
+     
+                        br = new BufferedReader(new FileReader(CsvFile)); 
         switch (value) {
             case "Characters" : {
                 String CsvFile = "characters.csv";
@@ -502,23 +551,121 @@ class scene3 extends hello {
                     catch (IOException ex) {
                         Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
                     }
+
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             }
+
+            case "Literary Devices" : { 
+
+                String CsvFile = "literaryDevices.csv";
+                String FieldDelimiter = ",";
+     
+                    BufferedReader br; 
+     
+                    try {
+     
+                        br = new BufferedReader(new FileReader(CsvFile)); 
+     
+                        String line; 
+                        
+                        while((line = br.readLine()) !=null) {
+     
+                            String[] fields = line.split(FieldDelimiter, -1); 
+                            Record record = new Record(fields[0], fields[1], fields[2]); 
+                            dataList.add(record); 
+                        } 
+                        
+ 
+                    }
+                    catch (FileNotFoundException ex) { 
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                    }
+     
+                    catch (IOException ex) {
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+
             case "Literary Devices" : {
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
+            }
+
+            case "Techniques" : {
+
+                String CsvFile = "techniques.csv";
+                String FieldDelimiter = ",";
+     
+                    BufferedReader br; 
+     
+                    try {
+     
+                        br = new BufferedReader(new FileReader(CsvFile)); 
+     
+                        String line; 
+                        
+                        while((line = br.readLine()) !=null) {
+     
+                            String[] fields = line.split(FieldDelimiter, -1); 
+                            Record record = new Record(fields[0], fields[1], fields[2]); 
+                            dataList.add(record); 
+                        } 
+                        
+ 
+                    }
+                    catch (FileNotFoundException ex) { 
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                    }
+     
+                    catch (IOException ex) {
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
             } 
             case "Techniques" : {
+
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             } 
+
+            case "Themes" : {
+
+                String CsvFile = "themes.csv";
+                String FieldDelimiter = ",";
+     
+                    BufferedReader br; 
+     
+                    try {
+     
+                        br = new BufferedReader(new FileReader(CsvFile)); 
+     
+                        String line; 
+                        
+                        while((line = br.readLine()) !=null) {
+     
+                            String[] fields = line.split(FieldDelimiter, -1); 
+                            Record record = new Record(fields[0], fields[1], fields[2]); 
+                            dataList.add(record); 
+                        } 
+                        
+ 
+                    }
+                    catch (FileNotFoundException ex) { 
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                    }
+     
+                    catch (IOException ex) {
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+
             case "Themes" : {
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
@@ -526,18 +673,114 @@ class scene3 extends hello {
                 break;
             } 
             case "Important Quotes" : {
+
+
+                String CsvFile = "importantQuotes.csv";
+                String FieldDelimiter = ",";
+     
+                    BufferedReader br; 
+     
+                    try {
+     
+                        br = new BufferedReader(new FileReader(CsvFile)); 
+     
+                        String line; 
+                        
+                        while((line = br.readLine()) !=null) {
+     
+                            String[] fields = line.split(FieldDelimiter, -1); 
+                            Record record = new Record(fields[0], fields[1], fields[2]); 
+                            dataList.add(record); 
+                        } 
+                        
+ 
+                    }
+                    catch (FileNotFoundException ex) { 
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                    }
+     
+                    catch (IOException ex) {
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             } 
+
             case "Plot Analysis" : {
+
+                String CsvFile = "plotAnalysis.csv";
+                String FieldDelimiter = ",";
+     
+                    BufferedReader br; 
+     
+                    try {
+     
+                        br = new BufferedReader(new FileReader(CsvFile)); 
+     
+                        String line; 
+                        
+                        while((line = br.readLine()) !=null) {
+     
+                            String[] fields = line.split(FieldDelimiter, -1); 
+                            Record record = new Record(fields[0], fields[1], fields[2]); 
+                            dataList.add(record); 
+                        } 
+                        
+ 
+                    }
+                    catch (FileNotFoundException ex) { 
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                    }
+     
+                    catch (IOException ex) {
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+
+
+            case "Plot Analysis" : {
+
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().add(tableView);
  
                 break;
             } 
             case "Additional Notes" : {
+
+
+                String CsvFile = "additionalNotes.csv";
+                String FieldDelimiter = ",";
+     
+                    BufferedReader br; 
+     
+                    try {
+     
+                        br = new BufferedReader(new FileReader(CsvFile)); 
+     
+                        String line; 
+                        
+                        while((line = br.readLine()) !=null) {
+     
+                            String[] fields = line.split(FieldDelimiter, -1); 
+                            Record record = new Record(fields[0], fields[1], fields[2]); 
+                            dataList.add(record); 
+                        } 
+                        
+ 
+                    }
+                    catch (FileNotFoundException ex) { 
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                    }
+     
+                    catch (IOException ex) {
+                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().add(tableView);
  
@@ -549,5 +792,7 @@ class scene3 extends hello {
     }
 
    
+}
+
 }
 

@@ -49,7 +49,7 @@ public class hello2 extends Application {
  
         String categories[] = {"Characters", "Literary Devices", "Techniques", "Themes", "Important Quotes", "Plot Analysis", "Additional Notes"};
  
-        
+        Label selected1= new Label(); 
         Label selected2 = new Label();
         Text welcome = new Text();
         welcome.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20)); 
@@ -74,7 +74,7 @@ public class hello2 extends Application {
                 // Laksyha's part 
                 // add file 
                 // example of an action: 
-            //    selected1.setText(addNotes.getValue() + " selected");
+               selected1.setText(addNotes.getValue() + " selected");
                 
             }
  
@@ -106,7 +106,7 @@ public class hello2 extends Application {
         grid.add(welcome, 0, 0);
         grid.add(new Label("add notes: "), 1,25);
         grid.add(addNotes, 1, 26);
-        //grid.add(selected1, 1, 27);
+        grid.add(selected1, 1, 27);
         grid.add(new Label("see notes: "),2,25);
         grid.add(readNotes, 2, 26);
         grid.add(selected2, 2, 27);
@@ -358,11 +358,23 @@ class idk2 extends hello2 {
                 window.setTitle("Additional Notes");
                 additionalNotesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+
                     if(!pageNumberA.getText().isEmpty()&&!additionalNotes.getText().isEmpty()&&!notes.getText().isEmpty()){
                         File writeFile = new File("additionalNotes.csv");
                         writer(writeFile,pageNumberA,additionalNotes,notes);
                     }
                 });
+
+                if(!pageNumberA.getText().isEmpty()&&!additionalNotes.getText().isEmpty()&&!notes.getText().isEmpty()){
+                File writeFile = new File("additionalNotes.csv");
+                 writer(writeFile,pageNumberA,additionalNotes,notes);
+                }
+                else{
+                    error(analysisText,pageNumberP,plotAnalysis,plotLabel);   
+                   }
+                   }
+                    );
+
                 root.getChildren().add(additionalNotesGrid);
                 break;
             }

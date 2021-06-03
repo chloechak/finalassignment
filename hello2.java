@@ -362,6 +362,9 @@ class idk2 extends hello2 {
                         File writeFile = new File("additionalNotes.csv");
                         writer(writeFile,pageNumberA,additionalNotes,notes);
                     }
+                    else{
+                        error(notes,pageNumberA,additionalNotes, literaryLabel); 
+                    }
                 });
                 root.getChildren().add(additionalNotesGrid);
                 break;

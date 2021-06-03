@@ -523,10 +523,15 @@ class scene3 extends hello {
  
         tableView.getColumns().clear();
         System.out.println(value);
+
         switch (value) {
+ 
             case "Characters" : {
-            String CsvFile = "Characters.csv";
-                String FieldDelimiter = "/";
+                
+                window.setTitle("Characters");
+                
+                String CsvFile = "Characters.csv";
+                    String FieldDelimiter = "/";
     
                 BufferedReader br; 
     
@@ -543,61 +548,281 @@ class scene3 extends hello {
                         System.out.println(fields[0]);
                         System.out.println(fields[1]);
                         System.out.println(fields[2]);
-
+ 
                         dataList.add(record); 
                     } 
                 }
-
+ 
                 catch (FileNotFoundException ex) { 
+ 
                     Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
                 }
     
                 catch (IOException ex) {
                     Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
+ 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             }
             case "Literary Devices" : {
+                
+                window.setTitle("Literary Devices");
+ 
+                String CsvFile = "literaryDevices.csv";
+                    String FieldDelimiter = "/";
+    
+                    BufferedReader br; 
+    
+                try {
+    
+                    br = new BufferedReader(new FileReader(CsvFile)); 
+    
+                    String line; 
+                    
+                    while((line = br.readLine()) !=null) {
+    
+                        String[] fields = line.split(FieldDelimiter, -1); 
+                        Record record = new Record(fields[0], fields[1], fields[2]); 
+                        System.out.println(fields[0]);
+                        System.out.println(fields[1]);
+                        System.out.println(fields[2]);
+ 
+                        dataList.add(record); 
+                    } 
+                }
+ 
+                catch (FileNotFoundException ex) { 
+ 
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                }
+    
+                catch (IOException ex) {
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ 
+ 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             } 
+ 
             case "Techniques" : {
+
+                window.setTitle("Techniques");
+ 
+                String CsvFile = "techniques.csv";
+                    String FieldDelimiter = "/";
+    
+                    BufferedReader br; 
+    
+                try {
+    
+                    br = new BufferedReader(new FileReader(CsvFile)); 
+    
+                    String line; 
+                    
+                    while((line = br.readLine()) !=null) {
+    
+                        String[] fields = line.split(FieldDelimiter, -1); 
+                        Record record = new Record(fields[0], fields[1], fields[2]); 
+                        System.out.println(fields[0]);
+                        System.out.println(fields[1]);
+                        System.out.println(fields[2]);
+ 
+                        dataList.add(record); 
+                    } 
+                }
+ 
+                catch (FileNotFoundException ex) { 
+ 
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                }
+    
+                catch (IOException ex) {
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ 
+ 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             } 
-            case "Themes" : {
+ 
+            case "Themes" : { 
+
+                window.setTitle("Themes");
+ 
+                String CsvFile = "themes.csv"; 
+                    String FieldDelimiter = "/";
+    
+                    BufferedReader br; 
+    
+                try {
+    
+                    br = new BufferedReader(new FileReader(CsvFile)); 
+    
+                    String line; 
+                    
+                    while((line = br.readLine()) !=null) {
+    
+                        String[] fields = line.split(FieldDelimiter, -1); 
+                        Record record = new Record(fields[0], fields[1], fields[2]); 
+                        System.out.println(fields[0]);
+                        System.out.println(fields[1]);
+                        System.out.println(fields[2]);
+ 
+                        dataList.add(record); 
+                    } 
+                }
+ 
+                catch (FileNotFoundException ex) { 
+ 
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                }
+    
+                catch (IOException ex) {
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ 
+ 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             } 
+ 
             case "Important Quotes" : {
+
+                window.setTitle("Important Quotes");
+ 
+                String CsvFile = "importantQuotes.csv";
+                    String FieldDelimiter = "/";
+    
+                    BufferedReader br; 
+    
+                try {
+    
+                    br = new BufferedReader(new FileReader(CsvFile)); 
+    
+                    String line; 
+                    
+                    while((line = br.readLine()) !=null) {
+    
+                        String[] fields = line.split(FieldDelimiter, -1); 
+                        Record record = new Record(fields[0], fields[1], fields[2]); 
+                        System.out.println(fields[0]);
+                        System.out.println(fields[1]);
+                        System.out.println(fields[2]);
+ 
+                        dataList.add(record); 
+                    } 
+                }
+ 
+                catch (FileNotFoundException ex) { 
+ 
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                }
+    
+                catch (IOException ex) {
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ 
+ 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             } 
             case "Plot Analysis" : {
+
+                window.setTitle("Plot Analysis");
+ 
+                String CsvFile = "plotAnalysis.csv";
+                    String FieldDelimiter = "/";
+    
+                    BufferedReader br; 
+    
+                try {
+    
+                    br = new BufferedReader(new FileReader(CsvFile)); 
+    
+                    String line; 
+                    
+                    while((line = br.readLine()) !=null) {
+    
+                        String[] fields = line.split(FieldDelimiter, -1); 
+                        Record record = new Record(fields[0], fields[1], fields[2]); 
+                        System.out.println(fields[0]);
+                        System.out.println(fields[1]);
+                        System.out.println(fields[2]);
+ 
+                        dataList.add(record); 
+                    } 
+                }
+ 
+                catch (FileNotFoundException ex) { 
+ 
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                }
+    
+                catch (IOException ex) {
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ 
+ 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().add(tableView);
  
                 break;
             } 
             case "Additional Notes" : {
+
+                window.setTitle("Additional Notes");
+ 
+                String CsvFile = "Characters.csv";
+                    String FieldDelimiter = "/";
+    
+                    BufferedReader br; 
+    
+                try {
+    
+                    br = new BufferedReader(new FileReader(CsvFile)); 
+    
+                    String line; 
+                    
+                    while((line = br.readLine()) !=null) {
+    
+                        String[] fields = line.split(FieldDelimiter, -1); 
+                        Record record = new Record(fields[0], fields[1], fields[2]); 
+                        System.out.println(fields[0]);
+                        System.out.println(fields[1]);
+                        System.out.println(fields[2]);
+ 
+                        dataList.add(record); 
+                    } 
+                }
+ 
+                catch (FileNotFoundException ex) { 
+ 
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
+                }
+    
+                catch (IOException ex) {
+                    Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
+                }
+ 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().add(tableView);
  
                 break;
             }
         }
+
         window2.setScene(scene3);
         window2.show();
     }

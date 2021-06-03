@@ -513,7 +513,8 @@ class scene32 extends hello2 {
             }
             case "Literary Devices" : {
                 
-                //window.setTitle("Literary Devices");
+                window.setTitle("Literary Devices");
+                window.show(); 
                 
                 String CsvFile = "literaryDevices.csv";
                     String FieldDelimiter = "/";
@@ -555,7 +556,8 @@ class scene32 extends hello2 {
  
             case "Techniques" : {
 
-                //window.setTitle("Techniques");
+                window.setTitle("Techniques");
+                window.show(); 
  
                 String CsvFile = "techniques.csv";
                     String FieldDelimiter = "/";
@@ -598,7 +600,8 @@ class scene32 extends hello2 {
  
             case "Themes" : { 
 
-                //window.setTitle("Themes");
+                window.setTitle("Themes");
+                window.show(); 
  
                 String CsvFile = "themes.csv"; 
                     String FieldDelimiter = "/";
@@ -641,7 +644,8 @@ class scene32 extends hello2 {
  
             case "Important Quotes" : {
 
-                // window.setTitle("Important Quotes");
+                window.setTitle("Important Quotes");
+                window.show(); 
  
                 String CsvFile = "importantQuotes.csv";
                     String FieldDelimiter = "/";
@@ -683,7 +687,8 @@ class scene32 extends hello2 {
             } 
             case "Plot Analysis" : {
 
-                // window.setTitle("Plot Analysis");
+                window.setTitle("Plot Analysis");
+                window.show(); 
  
                 String CsvFile = "plotAnalysis.csv";
                     String FieldDelimiter = "/";
@@ -725,7 +730,8 @@ class scene32 extends hello2 {
             } 
             case "Additional Notes" : {
 
-                // window.setTitle("Additional Notes");
+                window.setTitle("Additional Notes");
+                window.show(); 
  
                 String CsvFile = "Characters.csv";
                     String FieldDelimiter = "/";

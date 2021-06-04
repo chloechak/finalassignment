@@ -43,62 +43,59 @@ public class hello5 extends Application {
     
     @Override
     public void start(Stage primaryStage) {
+        // main window/first stage 
         window = primaryStage;
+        // title of window 
         window.setTitle("Note Taker");
+        // first scene's dimensions 
         Scene scene1 = new Scene(new Group(), 950, 450);
- 
+        
+        // Array to store the category names 
         String categories[] = {"Characters", "Literary Devices", "Techniques", "Themes", "Important Quotes", "Plot Analysis", "Additional Notes"};
  
+        // new labels 
         Label selected1= new Label(); 
         Label selected2 = new Label();
+
+        // new text 
         Text welcome = new Text();
+
+        // Text's dimensions and style 
         welcome.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20)); 
         welcome.setX(50); 
         welcome.setY(130);      
         welcome.setText("Welcome to your note taker"); 
     
+        // read notes combobox 
         ComboBox<String> readNotes = new ComboBox<>(FXCollections.observableArrayList(categories));
  
+        // add notes combobox 
         ComboBox<String> addNotes = new ComboBox<>(FXCollections.observableArrayList(categories));
  
- 
- 
-        //ComboBox addNotes = new ComboBox(FXCollections.observableArrayList(categories));  
+        // takes combobox options and allows it to switch scenes 
+        addNotes.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> idk2.display(newValue));
         
-        addNotes.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> idk2.display(newValue));
- 
-        
- 
+        // adds action and tells user what is selected from the combobox
         EventHandler<ActionEvent> addFile = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                // Laksyha's part 
-                // add file 
-                // example of an action: 
                 selected1.setText(addNotes.getValue() + " selected");
-                
             }
- 
         };
  
         addNotes.setOnAction(addFile);
  
+        readNotes.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> new thirdScene().display2(newValue));
  
- 
-        
-        readNotes.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> new scene32().display2(newValue));
- 
- 
+        // adds action and tells user what is selected from the combobox
         EventHandler<ActionEvent> addFile2 = new EventHandler<ActionEvent>() {
             public void handle(ActionEvent e) {
-                // Laksyha's part 
-                // add file 
-                // example of an action: 
                 selected2.setText(readNotes.getValue() + " selected");
             }
         };
  
         readNotes.setOnAction(addFile2);
  
+        // sets grid pane for the first scene and adds the components
         GridPane grid = new GridPane();
         grid.setVgap(4);
         grid.setHgap(10);
@@ -408,52 +405,49 @@ class idk2 extends hello5 {
       
     }
 }
-class scene32 extends hello5 {
 
+class thirdScene extends hello5 {
+    
     public class Record {
-
+        // states the properties that can be read and modified 
         private SimpleStringProperty pageNumber, Topic, Description;
 
+        // Searches for the specific string pageNumber 
         public String getPageNumber() {
             return pageNumber.get();
         }
 
+        // Searches for the specific string Topic 
         public String getTopic() {
             return Topic.get();
         }
-
+        
+        // Searches for the specific string pageNumber 
         public String getDescription() {
             return Description.get();
         }
 
+        // records the values of the strings 
         Record(String pageNumber, String Topic, String Description) {
             this.pageNumber = new SimpleStringProperty(pageNumber);
             this.Topic = new SimpleStringProperty(Topic);
             this.Description = new SimpleStringProperty(Description);
-
         }
     }
     
- 
+    // creates new TableVIew to display the information in the csv files 
     private final static TableView<Record> tableView = new TableView<>();
-
+    // creates observable list to store the values from the csv files
     private final static ObservableList<Record> dataList = FXCollections.observableArrayList();
  
+
     public void display2 (String value) { 
-
-        //String categories[] = {"Characters", "Literary Devices", "Techniques", "Themes", "Important Quotes", "Plot Analysis", "Additional Notes"};
-
+        // new stage 
         Stage window2 = new Stage();
+        // new scene 
         Scene scene3 = new Scene(new Group(), 850, 450);
-        //final ObservableList<Record> data = FXCollections.observableArrayList();  
-
-
-        // TextField searchField = new TextField();
-        // searchField.setPromptText("Search");
-        // searchField.setMaxWidth(200);
-
-
         
+        // columns that will be displayed in the TableView
         TableColumn columnA1 = new TableColumn("Page Number");
         columnA1.setCellValueFactory(new PropertyValueFactory<>("PageNumber"));
  
@@ -463,17 +457,20 @@ class scene32 extends hello5 {
         TableColumn columnA3 = new TableColumn("Details");
         columnA3.setCellValueFactory(new PropertyValueFactory<>("Description"));
  
+        // adds the items from the observableLIst
         tableView.setItems(dataList);
         Group root = (Group)scene3.getRoot();
  
+        // dimensions for the columns 
         columnA1.setPrefWidth(300);
         columnA2.setPrefWidth(300);
         columnA3.setPrefWidth(240);
- 
+
+        // tableView dimension
         tableView.setPrefHeight(440);
  
+        // clears columns every time a new combobox option is opened 
         tableView.getColumns().clear();
-        System.out.println(value);
 
         switch (value) {
  
@@ -506,11 +503,11 @@ class scene32 extends hello5 {
  
                 catch (FileNotFoundException ex) { 
  
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);    
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
                 }
     
                 catch (IOException ex) {
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
@@ -547,11 +544,11 @@ class scene32 extends hello5 {
  
                 catch (FileNotFoundException ex) { 
  
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);    
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
                 }
     
                 catch (IOException ex) {
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
@@ -591,11 +588,11 @@ class scene32 extends hello5 {
  
                 catch (FileNotFoundException ex) { 
  
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);    
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
                 }
     
                 catch (IOException ex) {
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
  
@@ -635,11 +632,11 @@ class scene32 extends hello5 {
  
                 catch (FileNotFoundException ex) { 
  
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);    
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
                 }
     
                 catch (IOException ex) {
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
  
@@ -679,11 +676,11 @@ class scene32 extends hello5 {
  
                 catch (FileNotFoundException ex) { 
  
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);    
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
                 }
     
                 catch (IOException ex) {
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
  
@@ -722,11 +719,11 @@ class scene32 extends hello5 {
  
                 catch (FileNotFoundException ex) { 
  
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);    
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
                 }
     
                 catch (IOException ex) {
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
  
@@ -765,11 +762,11 @@ class scene32 extends hello5 {
  
                 catch (FileNotFoundException ex) { 
  
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);    
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
                 }
     
                 catch (IOException ex) {
-                    Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);

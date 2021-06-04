@@ -1,3 +1,11 @@
+/*
+ * Date: May 21, 2021
+ * Names: Chloe Chak, Lakysha Moonemalle, Chloe Hoang and Dhruvika Bhatia 
+ * Teacher: Mr. Ho
+ * Description: Virtual Note Taker - Culminating 
+*/ 
+
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -519,6 +527,7 @@ class idk2 extends hello5 {
     }
      * 
      */
+
 /**
  * description- this method will display the message that the text fields/text area isnt completed and must be completed 
  * @param textArea- text area is for checking if the text area of each scene is filled
@@ -533,6 +542,7 @@ class idk2 extends hello5 {
         }
    
     }
+
 /**
  * description- this is a void method that will write into the csv file 
  * @param writeFile -write file is the file with the needed file name
@@ -656,27 +666,42 @@ class thirdScene extends hello5 {
         // clears columns every time a new combobox option is opened 
         tableView.getColumns().clear();
 
+        
+        // This is a switch statment, allows expression values are compared with case values
         switch (value) {
  
+            // Each value in a switch statement is a case 
+            // Characters case
             case "Characters" : {
-               // window.show(); 
- 
+
+                // Setting the title for this window 
                 window2.setTitle("Characters");
                 
+                // Storing the CSV file and dilimiter as a string
                 String CsvFile = "Characters.csv";
                 String FieldDelimiter = "/";
+                
+                // Buffered reader allows the text file to be read from user input 
+                // Buffered reader was used because it is faster than scanner and ONLY reads character stream
                 BufferedReader br; 
     
+                // Try and Catch - allows for code to be tested for errors
                 try {
     
+                    // Buffer reader is reading file
                     br = new BufferedReader(new FileReader(CsvFile)); 
     
                     String line; 
                     
+                    // While loop for printing the user input on the table
                     while((line = br.readLine()) !=null) {
     
+                        // Dilimiter is being implemented 
                         String[] fields = line.split(FieldDelimiter, -1); 
+
                         Record record = new Record(fields[0], fields[1], fields[2]); 
+
+                        // Prints user input
                         System.out.println(fields[0]);
                         System.out.println(fields[1]);
                         System.out.println(fields[2]);
@@ -685,6 +710,8 @@ class thirdScene extends hello5 {
                     } 
                 }
  
+                
+                // Must include if file is not found - if try is unable to be executed 
                 catch (FileNotFoundException ex) { 
  
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
@@ -694,26 +721,37 @@ class thirdScene extends hello5 {
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
+                // GUI portion 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             }
+
+            // Each value in a switch statement is a case 
+            // Literary Devices case
             case "Literary Devices" : {
                 
-                //window.show(); 
+                // Setting the title
+                window2.setTitle("Literary Devices"); 
                 
+                // Storing the CSV file and dilimiter as a string
                 String CsvFile = "literaryDevices.csv";
-                    String FieldDelimiter = "/";
+                String FieldDelimiter = "/";
     
+                // Buffered reader allows the text file to be read from user input 
+                // Buffered reader was used because it is faster than scanner and ONLY reads character stream
                 BufferedReader br; 
     
+                // Try and Catch -  allows for code to be tested for errors
                 try {
     
+                    // Buffer reader is reading file
                     br = new BufferedReader(new FileReader(CsvFile)); 
     
                     String line; 
                     
+                    // While loop for printing the user input on the table 
                     while((line = br.readLine()) !=null) {
     
                         String[] fields = line.split(FieldDelimiter, -1); 
@@ -726,6 +764,7 @@ class thirdScene extends hello5 {
                     } 
                 }
  
+                // Must include if file is not found - if try is unable to be executed
                 catch (FileNotFoundException ex) { 
  
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
@@ -735,6 +774,7 @@ class thirdScene extends hello5 {
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
+                // GUI portion 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
                 window.setTitle("Literary Devices");
@@ -742,22 +782,31 @@ class thirdScene extends hello5 {
             } 
             
  
+            // Each value in a switch statement is a case 
+            // Techniques case
             case "Techniques" : {
 
-                //window.setTitle("Techniques");
-               // window.show(); 
+                // Setting the title for the window 
+                window2.setTitle("Techniques"); 
  
+                // Storing the CSV file and dilimiter as a string
                 String CsvFile = "techniques.csv";
-                    String FieldDelimiter = "/";
+                String FieldDelimiter = "/";
     
-                    BufferedReader br; 
+                
+                // Buffered reader allows the text file to be read from user input 
+                // Buffered reader was used because it is faster than scanner and ONLY reads character stream
+                BufferedReader br; 
     
+                // Try and Catch -  allows for code to be tested for errors
                 try {
     
+                    // Buffer reader is reading file
                     br = new BufferedReader(new FileReader(CsvFile)); 
     
                     String line; 
                     
+                    // While loop for printing the user input on the table 
                     while((line = br.readLine()) !=null) {
     
                         String[] fields = line.split(FieldDelimiter, -1); 
@@ -770,6 +819,7 @@ class thirdScene extends hello5 {
                     } 
                 }
  
+                // Must include if file is not found - if try is unable to be executed
                 catch (FileNotFoundException ex) { 
  
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
@@ -780,28 +830,37 @@ class thirdScene extends hello5 {
                 }
  
  
+                // GUI (JavaFX) portion 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             } 
  
+            // Each value in a switch statement is a case 
+            // Themes case
             case "Themes" : { 
-
-             window2.setTitle("Themes");
-            // window.show(); 
+                
+                // Setting the title 
+                window2.setTitle("Themes"); 
  
+                // Storing the CSV file and dilimiter as a string
                 String CsvFile = "themes.csv"; 
-                    String FieldDelimiter = "/";
+                String FieldDelimiter = "/";
     
-                    BufferedReader br; 
+                // Buffered reader allows the text file to be read from user input 
+                // Buffered reader was used because it is faster than scanner and ONLY reads character stream
+                BufferedReader br; 
     
+                // Try and Catch -  allows for code to be tested for errors
                 try {
     
+                    // Buffer reader is reading file
                     br = new BufferedReader(new FileReader(CsvFile)); 
     
                     String line; 
                     
+                    // While loop for printing the user input on the table
                     while((line = br.readLine()) !=null) {
     
                         String[] fields = line.split(FieldDelimiter, -1); 
@@ -814,6 +873,7 @@ class thirdScene extends hello5 {
                     } 
                 }
  
+                // Must include if file is not found - if try is unable to be executed
                 catch (FileNotFoundException ex) { 
  
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
@@ -824,28 +884,38 @@ class thirdScene extends hello5 {
                 }
  
  
+                // GUI (JavaFX) Portion 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
-                window.setTitle("Themes"); 
+                
                 break;
             } 
  
+            // Each value in a switch statement is a case 
+            // Important Quotes case
             case "Important Quotes" : {
-
-               // window.setTitle("Important Quotes");
-          //  window.show(); 
+                
+                // Setting the title 
+                window2.setTitle("Important Quotes");
  
+ 
+                // Storing the CSV file and dilimiter as a string
                 String CsvFile = "importantQuotes.csv";
-                    String FieldDelimiter = "/";
+                String FieldDelimiter = "/";
     
-                    BufferedReader br; 
+                // Buffered reader allows the text file to be read from user input 
+                // Buffered reader was used because it is faster than scanner and ONLY reads character stream
+                BufferedReader br; 
     
+                // Try and Catch -  allows for code to be tested for errors
                 try {
     
+                    // Buffer reader is reading file
                     br = new BufferedReader(new FileReader(CsvFile)); 
     
                     String line; 
                     
+                    // While loop for printing the user input on the table
                     while((line = br.readLine()) !=null) {
     
                         String[] fields = line.split(FieldDelimiter, -1); 
@@ -858,6 +928,7 @@ class thirdScene extends hello5 {
                     } 
                 }
  
+                // Must include if file is not found - if try is unable to be executed
                 catch (FileNotFoundException ex) { 
  
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
@@ -867,28 +938,39 @@ class thirdScene extends hello5 {
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
- 
+                // GUI (JavaFX) Portion 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             } 
-            case "Plot Analysis" : {
 
-               // window.setTitle("Plot Analysis");
-                //window.show(); 
+
+            // Each value in a switch statement is a case 
+            // Plot Analysis case
+            case "Plot Analysis" : {
+                
+                // Setting the title 
+                window2.setTitle("Plot Analysis");
+              
  
+                // Storing the CSV file and dilimiter as a string
                 String CsvFile = "plotAnalysis.csv";
-                    String FieldDelimiter = "/";
+                String FieldDelimiter = "/";
     
-                    BufferedReader br; 
+                // Buffered reader allows the text file to be read from user input 
+                // Buffered reader was used because it is faster than scanner and ONLY reads character stream
+                BufferedReader br; 
     
+                // Try and Catch -  allows for code to be tested for errors
                 try {
     
+                    // Buffer reader is reading file
                     br = new BufferedReader(new FileReader(CsvFile)); 
     
                     String line; 
                     
+                    // While loop for printing the user input on the table
                     while((line = br.readLine()) !=null) {
     
                         String[] fields = line.split(FieldDelimiter, -1); 
@@ -901,6 +983,7 @@ class thirdScene extends hello5 {
                     } 
                 }
  
+                // Must include if file is not found - if try is unable to be executed
                 catch (FileNotFoundException ex) { 
  
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
@@ -910,28 +993,38 @@ class thirdScene extends hello5 {
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
- 
+                // GUI (JavaFX) Portion 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().add(tableView);
  
                 break;
             } 
-            case "Additional Notes" : {
 
-             //window.setTitle("Additional Notes");
-               //window.show(); 
+            // Each value in a switch statement is a case 
+            // Additional Notes case
+            case "Additional Notes" : {
+                
+                // Setting the title 
+                window2.setTitle("Additional Notes");
+             
  
-                String CsvFile = "Characters.csv";
-                    String FieldDelimiter = "/";
+                // Storing the CSV file and dilimiter as a string
+                String CsvFile = "additionalNotes.csv";
+                String FieldDelimiter = "/";
     
-                    BufferedReader br; 
+                // Buffered reader allows the text file to be read from user input 
+                // Buffered reader was used because it is faster than scanner and ONLY reads character stream
+                BufferedReader br; 
     
+                // Try and Catch -  allows for code to be tested for errors
                 try {
     
+                    // Buffer reader is reading file
                     br = new BufferedReader(new FileReader(CsvFile)); 
     
                     String line; 
                     
+                    // While loop for printing the user input on the table
                     while((line = br.readLine()) !=null) {
     
                         String[] fields = line.split(FieldDelimiter, -1); 
@@ -944,6 +1037,7 @@ class thirdScene extends hello5 {
                     } 
                 }
  
+                // Must include if file is not found - if try is unable to be executed
                 catch (FileNotFoundException ex) { 
  
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);    
@@ -953,6 +1047,7 @@ class thirdScene extends hello5 {
                     Logger.getLogger(thirdScene.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
+                // GUI (JavaFX) Portion 
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().add(tableView);
  
@@ -960,6 +1055,7 @@ class thirdScene extends hello5 {
             }
         }
 
+        // Shows the window 
         window2.setScene(scene3);
         window2.show();
     }

@@ -140,11 +140,22 @@ public class noteTaker extends Application {
 }
  
 class secondScene extends noteTaker {
+
+    /**
+     * 
+     * @author - Chloe Hoang
+     * 
+     * @param value - 
+     */
+
     public static void display (String value) {
 
+        // sets a new stage for the second window 
         Stage window = new Stage();
+        // sets the dimensions for the second window
         Scene scene2 = new Scene(new Group(), 850, 450);
  
+        // Creates a TextField for the Topic of notes (ex. "O Romeo, Romeo, wherefore art thou Romeo?"")
         TextField character = new TextField("");
         TextField literaryDevices = new TextField("");
         TextField techniques = new TextField("");
@@ -153,6 +164,7 @@ class secondScene extends noteTaker {
         TextField plotAnalysis = new TextField("");
         TextField additionalNotes = new TextField("");
  
+        // Creates a TextField for the page number the note is on (ex. "26")
         TextField pageNumberC = new TextField("");
         TextField pageNumberL = new TextField("");
         TextField pageNumberTech = new TextField("");
@@ -161,6 +173,7 @@ class secondScene extends noteTaker {
         TextField pageNumberP = new TextField("");
         TextField pageNumberA = new TextField("");
  
+        // Creates a TextField for the details of the note (ex. "Leaning out of her upstairs window...")
         TextArea detailText = new TextArea ("");
         TextArea explanation = new TextArea ("");
         TextArea impact = new TextArea ("");
@@ -169,7 +182,10 @@ class secondScene extends noteTaker {
         TextArea analysisText = new TextArea ("");
         TextArea notes = new TextArea ("");
  
+        // Button that allows the user to save their notes int the csv file
         Button submitButton = new Button ("Submit");
+
+        // Text to state if the file was able to save or if there was an error
         Label charactersLabel=new Label();
         Label literaryLabel= new Label();
         Label techniqueLabel = new Label();
@@ -178,6 +194,7 @@ class secondScene extends noteTaker {
         Label plotLabel = new Label();
         Label additonLabel = new Label();
 
+        // Text to state if the page number is valid or not (checks if its empty, and checks if user properly inputted a number - without a letter)
         Label charactersLabel2=new Label();
         Label literaryLabel2= new Label();
         Label techniqueLabel2 = new Label();
@@ -187,107 +204,154 @@ class secondScene extends noteTaker {
         Label additonLabel2 = new Label();
 
         //TextField[] topics = new TextField[7];
+
+        // Array for topic
         TextField[] topics = {character, literaryDevices, techniques, themes, importantQuotes, plotAnalysis, additionalNotes};
 
+        // Array for page number
         TextField[] pageNum = {pageNumberC, pageNumberL, pageNumberTech, pageNumberTheme, pageNumberQ, pageNumberP, pageNumberA};
 
+        // Array for detailed note 
         TextArea[] fullNote = {detailText, explanation, impact, implied, quoteExplanation, analysisText, notes};
        
 
         // characters grid
         GridPane characterGrid = new GridPane();
+        // Sets horizontal and vertical gaps between rows
         characterGrid.setVgap(4);
         characterGrid.setHgap(10);
+        // Sets the value of the property padding
         characterGrid.setPadding(new Insets(5, 5, 5, 5));
+        // Sets the location of the page number label and text box
         characterGrid.add(new Label("Page Number: "), 0, 1);
         characterGrid.add(pageNumberC, 1, 1);
+        // Sets the location of the character label and text box
         characterGrid.add(new Label("Character: "), 0, 3);
         characterGrid.add(character, 1, 2, 3, 2);
+        // Sets the location of the detailed note label and text box
         characterGrid.add(new Label("Character Detail: "), 0, 4);
         characterGrid.add(detailText, 0, 5, 3, 1); 
+        // Sets the location of the validation labels 
         characterGrid.add(charactersLabel, 5, 7);
         characterGrid.add(charactersLabel2, 5, 1);
 
-
-
         // literary devices grid
         GridPane literaryDevicesGrid = new GridPane();
+        // Sets horizontal and vertical gaps between rows
         literaryDevicesGrid.setVgap(4);
         literaryDevicesGrid.setHgap(10);
+        // Sets the value of the property padding
         literaryDevicesGrid.setPadding(new Insets(5, 5, 5, 5));
+        // Sets the location of the page number label and text box
         literaryDevicesGrid.add(new Label("Page Number: "), 0, 1);
         literaryDevicesGrid.add(pageNumberL, 1, 1);
+        // Sets the location of the literary device label and text box
         literaryDevicesGrid.add(new Label("Literary Device: "), 0, 3);
         literaryDevicesGrid.add(literaryDevices, 1, 2, 3, 2);
+        // Sets the location of the detailed note label and text box
         literaryDevicesGrid.add(new Label("Explanation: "), 0, 4);
         literaryDevicesGrid.add(explanation, 0, 5, 3, 1);   
+        // Sets the location of the validation labels 
         literaryDevicesGrid.add(literaryLabel, 6, 7); 
 
         // techniques grid
         GridPane techniquesGrid = new GridPane();
+        // Sets horizontal and vertical gaps between rows
         techniquesGrid.setVgap(4);
         techniquesGrid.setHgap(10);
+        // Sets the value of the property padding
         techniquesGrid.setPadding(new Insets(5, 5, 5, 5));
+        // Sets the location of the page number label and text box
         techniquesGrid.add(new Label("Page Number: "), 0, 1);
         techniquesGrid.add(pageNumberTech, 1, 1);
+        // Sets the location of the technique label and text box
         techniquesGrid.add(new Label("Technique used: "), 0, 3);
         techniquesGrid.add(techniques, 1, 2, 3, 2);
+        // Sets the location of the detailed note label and text box
         techniquesGrid.add(new Label("How it was used/Impact: "), 0, 4);
         techniquesGrid.add(impact, 0, 5, 3, 1); 
+        // Sets the location of the validation labels 
         techniquesGrid.add(techniqueLabel, 6, 7);
 
         // themes grid
         GridPane themesGrid = new GridPane();
+        // Sets horizontal and vertical gaps between rows
         themesGrid.setVgap(4);
         themesGrid.setHgap(10);
+        // Sets the value of the property padding
         themesGrid.setPadding(new Insets(5, 5, 5, 5));
+        // Sets the location of the page number label and text box
         themesGrid.add(new Label("Page Number: "), 0, 1);
         themesGrid.add(pageNumberTheme, 1, 1);
+        // Sets the location of the themes label and text box
         themesGrid.add(new Label("Themes: "), 0, 3);
         themesGrid.add(themes, 1, 2, 3, 2);
+        // Sets the location of the detailed note label and text box
         themesGrid.add(new Label("How is it Implied?: "), 0, 4);
-        themesGrid.add(implied, 0, 5, 3, 1);             
+        themesGrid.add(implied, 0, 5, 3, 1);            
+        // Sets the location of the validation labels  
         themesGrid.add(themesLabel, 6, 7);
+
         // important quotes grid
         GridPane importantQuotesGrid = new GridPane();
+        // Sets horizontal and vertical gaps between rows
         importantQuotesGrid.setVgap(4);
         importantQuotesGrid.setHgap(10);
+        // Sets the value of the property padding
         importantQuotesGrid.setPadding(new Insets(5, 5, 5, 5));
+        // Sets the location of the page number label and text box
         importantQuotesGrid.add(new Label("Page Number: "), 0, 1);
         importantQuotesGrid.add(pageNumberQ, 1, 1);
+        // Sets the location of the significant quotes label and text box
         importantQuotesGrid.add(new Label("Significant Quotes: "), 0, 3);
         importantQuotesGrid.add(importantQuotes, 1, 2, 3, 2);
+        // Sets the location of the detailed note label and text box
         importantQuotesGrid.add(new Label("Quote Explanation: "), 0, 4);
         importantQuotesGrid.add(quoteExplanation, 0, 5, 3, 1);  
+        // Sets the location of the validation labels 
         importantQuotesGrid.add(quotesLabel, 6, 7);   
 
         // plot analysis grid
         GridPane plotAnalysisGrid = new GridPane();
+        // Sets horizontal and vertical gaps between rows
         plotAnalysisGrid.setVgap(4);
         plotAnalysisGrid.setHgap(10);
+        // Sets the value of the property padding
         plotAnalysisGrid.setPadding(new Insets(5, 5, 5, 5));
+        // Sets the location of the page number label and text box
         plotAnalysisGrid.add(new Label("Page Number: "), 0, 1);
         plotAnalysisGrid.add(pageNumberP, 1, 1);
+        // Sets the location of the analysis label and text box
         plotAnalysisGrid.add(new Label("Analysis Name: "), 0, 3);
         plotAnalysisGrid.add(plotAnalysis, 1, 2, 3, 2);
+        // Sets the location of the detailed note label and text box
         plotAnalysisGrid.add(new Label("Plot Analysis: "), 0, 4);
         plotAnalysisGrid.add(analysisText, 0, 5, 3, 1);     
+        // Sets the location of the validation labels 
         plotAnalysisGrid.add(plotLabel, 6, 7);
 
- 
         // additional notes grid
         GridPane additionalNotesGrid = new GridPane();
+        // Sets horizontal and vertical gaps between rows
         additionalNotesGrid.setVgap(4);
         additionalNotesGrid.setHgap(10);
+        // Sets the value of the property padding
         additionalNotesGrid.setPadding(new Insets(5, 5, 5, 5));
+        // Sets the location of the page number label and text box
         additionalNotesGrid.add(new Label("Page Number: "), 0, 1);
         additionalNotesGrid.add(pageNumberA, 1, 1);
+        // Sets the location of the title label and text box
         additionalNotesGrid.add(new Label("Title: "), 0, 3);
         additionalNotesGrid.add(additionalNotes, 1, 2, 3, 2);
+        // Sets the location of the detailed note label and text box
         additionalNotesGrid.add(new Label("Additional Note: "), 0, 4);
         additionalNotesGrid.add(notes, 0, 5, 3, 1); 
+        // Sets the location of the validation labels 
         additionalNotesGrid.add(additonLabel, 6, 7);
+
+        // Grants user to read file
         Group root = (Group)scene2.getRoot();
+
         //the switch value will switch scenes when needed 
         switch (value) {
             //charcters scene

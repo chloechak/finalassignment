@@ -42,7 +42,7 @@ import javax.swing.JOptionPane;
 import javafx.scene.control.TableView;
 
  /**
-  * @author chloe chak, chloe hoang, lakysha, dhruvika
+  * @author chloe chak
   */
 
 public class noteTaker extends Application {
@@ -138,14 +138,17 @@ public class noteTaker extends Application {
     
     
 }
- 
+/**
+ * @author - Chloe Hoang and Lakysha 
+ */
 class secondScene extends noteTaker {
 
     /**
      * 
-     * @author - Chloe Hoang
+     * @author - Chloe Hoang and Lakysha
+     * Description - Sets the second scene interface and components where the user writes their notes
      * 
-     * @param value - 
+     * @param value - switches the window interface depending on the topic chosen
      */
 
     public static void display (String value) {
@@ -608,6 +611,7 @@ class secondScene extends noteTaker {
 
 /**
  * description- this method will display the message that the text fields/text area isnt completed and must be completed 
+ * @author - Lakysha
  * @param textArea- text area is for checking if the text area of each scene is filled
  * @param page - checking if the page number text field is filled
  * @param topic -checking if the topic text field is filled
@@ -623,6 +627,7 @@ class secondScene extends noteTaker {
 
 /**
  * description- this is a void method that will write into the csv file 
+ * @author - Lakysha
  * @param writeFile -write file is the file with the needed file name
  * @param page -page is the page number and will be displayed in the file
  * @param topic -topic is the topic  and will be displayed in the filec
@@ -652,6 +657,7 @@ class secondScene extends noteTaker {
     }
     /**
      * descripition- this is a boolean method that returns true if the page number is an integer and false if its not an integer
+     * @author - Lakysha
      * @param page -the page number of each scene is needed so it can be converted to an int
      * @param label2 -label 2 will show the message
      * @param message -the string that will be outputted

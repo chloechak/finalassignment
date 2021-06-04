@@ -154,6 +154,14 @@ class idk2 extends hello5 {
         Label quotesLabel = new Label();
         Label plotLabel = new Label();
         Label additonLabel = new Label();
+
+        Label charactersLabel2=new Label();
+        Label literaryLabel2= new Label();
+        Label techniqueLabel2 = new Label();
+        Label themesLabel2 = new Label(); 
+        Label quotesLabel2 = new Label();
+        Label plotLabel2 = new Label();
+        Label additonLabel2 = new Label();
     
        
 
@@ -168,7 +176,8 @@ class idk2 extends hello5 {
         characterGrid.add(character, 1, 2, 3, 2);
         characterGrid.add(new Label("Character Detail: "), 0, 4);
         characterGrid.add(detailText, 0, 5, 3, 1); 
-        characterGrid.add(charactersLabel, 6, 7);
+        characterGrid.add(charactersLabel, 5, 7);
+        characterGrid.add(charactersLabel2, 5, 1);
 
 
 
@@ -256,16 +265,20 @@ class idk2 extends hello5 {
                 window.setTitle("Characters");
                 characterGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(checkingInt(pageNumberC,charactersLabel2,"enter a valid page number" )){
+                        charactersLabel2.setText("page number valid"); 
                     if(!pageNumberC.getText().isEmpty()&&!character.getText().isEmpty()&&!detailText.getText().isEmpty()){
-                        File writeFile = new File("characters.csv");
-                        writer(writeFile,pageNumberC,character,detailText);
-                        charactersLabel.setText("success, saved in csv file");
-
+                            File writeFile = new File("characters.csv");
+                            writer(writeFile,pageNumberC,character,detailText);
+                            charactersLabel.setText("success, saved in csv file");
+    
+                        }
+                        else{
+                            error(detailText,pageNumberC,character,charactersLabel); 
+    
+                        }
                     }
-                    else{
-                        error(detailText,pageNumberC,character,charactersLabel); 
-
-                    }
+             
                 });
                 root.getChildren().add(characterGrid);
                 break;   
@@ -276,6 +289,8 @@ class idk2 extends hello5 {
                 window.setTitle("Literary Devices");
                 literaryDevicesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(checkingInt(pageNumberL,literaryLabel2,"enter a valid page number" )){
+                        literaryLabel2.setText("page number valid");  
                     if(!explanation.getText().isEmpty()&&!pageNumberL.getText().isEmpty()&&!literaryDevices.getText().isEmpty()){
                         File writeFile = new File("literaryDevices.csv");
                        writer(writeFile,pageNumberL,literaryDevices,explanation);
@@ -284,6 +299,7 @@ class idk2 extends hello5 {
                     else{
                     error(explanation,pageNumberL,literaryDevices, literaryLabel);  
                     }
+                }
                 });
                 root.getChildren().add(literaryDevicesGrid);
                 break;
@@ -292,6 +308,8 @@ class idk2 extends hello5 {
                 window.setTitle("Techniques");
                 techniquesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(checkingInt(pageNumberTech,techniqueLabel2,"enter a valid page number" )){
+                        literaryLabel2.setText("page number valid");  
                     if(!pageNumberTech.getText().isEmpty()&&!techniques.getText().isEmpty()&&!impact.getText().isEmpty()){
                         File writeFile = new File("techniques.csv");
                         writer(writeFile,pageNumberTech,techniques,impact);
@@ -300,6 +318,7 @@ class idk2 extends hello5 {
                     else {
                         error(impact,pageNumberTech,techniques,techniqueLabel); 
                     }
+                }
                 });
                 root.getChildren().add(techniquesGrid);
                 break;
@@ -308,6 +327,8 @@ class idk2 extends hello5 {
                 window.setTitle("Themes");
                 themesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(checkingInt(pageNumberTheme,themesLabel2,"enter a valid page number" )){
+                        themesLabel2.setText("page number valid");  
                     if(!pageNumberTheme.getText().isEmpty()&&!themes.getText().isEmpty()&&!implied.getText().isEmpty()){
                         File writeFile = new File("themes.csv");
                         writer(writeFile,pageNumberTheme,themes,implied);
@@ -316,6 +337,7 @@ class idk2 extends hello5 {
                     else {
                         error(implied,pageNumberTheme,themes,themesLabel);  
                     }
+                }
                 });
                 root.getChildren().add(themesGrid);
                 break;
@@ -324,6 +346,8 @@ class idk2 extends hello5 {
                 window.setTitle("Important Quotes");
                 importantQuotesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(checkingInt(pageNumberQ,quotesLabel2,"enter a valid page number" )){
+                        quotesLabel2.setText("page number valid");  
                     if(!pageNumberQ.getText().isEmpty()&&!importantQuotes.getText().isEmpty()&&!quoteExplanation.getText().isEmpty()){
                         File writeFile = new File("importantQuotes.csv");
                         writer(writeFile,pageNumberQ,importantQuotes,quoteExplanation);
@@ -332,6 +356,7 @@ class idk2 extends hello5 {
                     else {
                         error(quoteExplanation,pageNumberQ,importantQuotes,quotesLabel); 
                     }
+                }
                 });
                 root.getChildren().add(importantQuotesGrid);
                 break;
@@ -340,6 +365,8 @@ class idk2 extends hello5 {
                 window.setTitle("Plot Analysis");
                 plotAnalysisGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(checkingInt(pageNumberP,plotLabel2,"enter a valid page number" )){
+                        plotLabel2.setText("page number valid");  
                     if(!pageNumberP.getText().isEmpty()&&!plotAnalysis.getText().isEmpty()&&!analysisText.getText().isEmpty()){
                         File writeFile = new File("plotAnalysis.csv");
                         writer(writeFile,pageNumberP,plotAnalysis,analysisText);
@@ -348,6 +375,7 @@ class idk2 extends hello5 {
                     else {
                         error(analysisText,pageNumberP,plotAnalysis,plotLabel);   
                     }
+                }
                 });
                 root.getChildren().add(plotAnalysisGrid);
                 break;
@@ -356,14 +384,17 @@ class idk2 extends hello5 {
                 window.setTitle("Additional Notes");
                 additionalNotesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
+                    if(checkingInt(pageNumberA,additonLabel2,"enter a valid page number" )){
+                        quotesLabel2.setText("page number valid");  
                     if(!pageNumberA.getText().isEmpty()&&!additionalNotes.getText().isEmpty()&&!notes.getText().isEmpty()){
                         File writeFile = new File("additionalNotes.csv");
                         writer(writeFile,pageNumberA,additionalNotes,notes);
-                        literaryLabel.setText("success, saved in csv file");
+                        additonLabel.setText("success, saved in csv file");
                     }
                     else{
-                        error(notes,pageNumberA,additionalNotes,literaryLabel); 
+                        error(notes,pageNumberA,additionalNotes,additonLabel); 
                     }
+                }
                 });
                 root.getChildren().add(additionalNotesGrid);
                 break;
@@ -380,10 +411,6 @@ class idk2 extends hello5 {
         if (textArea.getText().isEmpty()||page.getText().isEmpty()||topic.getText().isEmpty())
         {
         selected1.setText("Please complete all fields");
-        }
-        else{
-        selected1.setText("success, saved in csv file");
- 
         }
    
     }
@@ -403,6 +430,19 @@ class idk2 extends hello5 {
           e.printStackTrace();
         }
       
+    }
+    private static boolean checkingInt(TextField page, Label label2, String message) 
+    { 
+        try 
+        { 
+            Integer.parseInt(page.getText()); 
+            return true; 
+        } 
+        catch (NumberFormatException e) 
+        { 
+            label2.setText(message);
+            return false; 
+        } 
     }
 }
 
@@ -780,4 +820,5 @@ class thirdScene extends hello5 {
         window2.show();
     }
 }
+
 

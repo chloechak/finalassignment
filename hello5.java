@@ -119,6 +119,7 @@ public class hello5 extends Application {
  
 class idk2 extends hello5 {
     public static void display (String value) {
+
         Stage window = new Stage();
         Scene scene2 = new Scene(new Group(), 850, 450);
  
@@ -265,20 +266,29 @@ class idk2 extends hello5 {
         additionalNotesGrid.add(notes, 0, 5, 3, 1); 
         additionalNotesGrid.add(additonLabel, 6, 7);
         Group root = (Group)scene2.getRoot();
-
+        //the switch value will switch scenes when needed 
         switch (value) {
+            //charcters scene
             case "Characters" : {
+                //set the title as characters
                 window.setTitle("Characters");
+                //place the submit button
                 characterGrid.add(submitButton, 0, 6);
+                //the submit button needs an action so the tasks are done
                 submitButton.setOnAction((ActionEvent event)->{
+                    //the method 
                     if(checkingInt(pageNumberC,charactersLabel2,"enter a valid page number" )){
                         charactersLabel2.setText("page number valid"); 
+                    //if all the areas and text fields are filled put it into the csv file
                     if(!pageNumberC.getText().isEmpty()&&!character.getText().isEmpty()&&!detailText.getText().isEmpty()){
+                        //the file name is characters
                             File writeFile = new File("characters.csv");
+                            //add the writer method so the data gets placed in the csv file
                             writer(writeFile,pageNumberC,character,detailText);
                             charactersLabel.setText("success, saved in csv file");
     
                         }
+                        //if the text boes arent all filled up then output error message
                         else{
                             error(detailText,pageNumberC,character,charactersLabel); 
     
@@ -286,128 +296,202 @@ class idk2 extends hello5 {
                     }
              
                 });
+                //place the charcter grid 
                 root.getChildren().add(characterGrid);
+                // break it so all functions stop here
                 break;   
             }
                 
-                    
+            //switch to literacy devices screen
             case "Literary Devices" : {
+                //set window title
                 window.setTitle("Literary Devices");
+                //place the submit button
                 literaryDevicesGrid.add(submitButton, 0, 6);
+                //the submit button's action will allow the processes to continue
                 submitButton.setOnAction((ActionEvent event)->{
-                    if(checkingInt(pageNumberL,literaryLabel2,"enter a valid page number" )){
-                        literaryLabel2.setText("page number valid");  
+                    //check if the page number is valid
+                    checkingInt(pageNumberL,literaryLabel2,"enter a valid page number" );
+                    //output that the page number valid if it is
+                       literaryLabel2.setText("page number valid");  
+                       //check if the text boxes are empty, if they arent execute the next couple of lines of code
                     if(!explanation.getText().isEmpty()&&!pageNumberL.getText().isEmpty()&&!literaryDevices.getText().isEmpty()){
+                        //name the file
                         File writeFile = new File("literaryDevices.csv");
+                    //write user inputs into the file
                        writer(writeFile,pageNumberL,literaryDevices,explanation);
+                       //display success message 
                        literaryLabel.setText("success, saved in csv file");
                     }
+                    //if the textboxes arent all filled then output the error
                     else{
                     error(explanation,pageNumberL,literaryDevices, literaryLabel);  
                     }
-                }
+                
                 });
+                //set the literary Devices grid
                 root.getChildren().add(literaryDevicesGrid);
+                //break program
                 break;
-            } 
+            }
+            //switch to techniques 
             case "Techniques" : {
+            //set window title
                 window.setTitle("Techniques");
+                //set the submit button
                 techniquesGrid.add(submitButton, 0, 6);
+                //the button should be an action so the next steps can be executed
                 submitButton.setOnAction((ActionEvent event)->{
+                    //check if the page number is valid
                     if(checkingInt(pageNumberTech,techniqueLabel2,"enter a valid page number" )){
                         literaryLabel2.setText("page number valid");  
+                        //check if all text fields are completed
                     if(!pageNumberTech.getText().isEmpty()&&!techniques.getText().isEmpty()&&!impact.getText().isEmpty()){
+                        //add file name to place all user inputs
                         File writeFile = new File("techniques.csv");
+                        //add method to write all inputs in file
                         writer(writeFile,pageNumberTech,techniques,impact);
                         techniqueLabel.setText("success, saved in csv file");
                     }
+                    //if textfields are incomplete show next error
                     else {
                         error(impact,pageNumberTech,techniques,techniqueLabel); 
                     }
                 }
                 });
+                //place the techniques grid
                 root.getChildren().add(techniquesGrid);
+                //break it here so no more actions happen in this scene
                 break;
             } 
+            //switch to the themes frame
             case "Themes" : {
+                //set the title for the window 
                 window.setTitle("Themes");
+                //place the submit button
                 themesGrid.add(submitButton, 0, 6);
+                //set the submit button as an actio so the next steps can be taken
                 submitButton.setOnAction((ActionEvent event)->{
+                    //check if the page number is valid 
                     if(checkingInt(pageNumberTheme,themesLabel2,"enter a valid page number" )){
                         themesLabel2.setText("page number valid");  
+                    //check if all the text fields are complete 
                     if(!pageNumberTheme.getText().isEmpty()&&!themes.getText().isEmpty()&&!implied.getText().isEmpty()){
+                        //write the file name into the file variable
                         File writeFile = new File("themes.csv");
+                        //write user inputs into the file
                         writer(writeFile,pageNumberTheme,themes,implied);
+                        //output that the data was added to the csv 
                         themesLabel.setText("success, saved in csv file");
                     }
+                    //if the text areas and text fields are not completed show error
                     else {
                         error(implied,pageNumberTheme,themes,themesLabel);  
                     }
                 }
                 });
+                //Place the themesGrid 
                 root.getChildren().add(themesGrid);
+                //break here so the scene is done
                 break;
             } 
+            //switch to the inportant quotes scene
             case "Important Quotes" : {
+                //set the title 
                 window.setTitle("Important Quotes");
+                //place submit button
                 importantQuotesGrid.add(submitButton, 0, 6);
+                //add action to button so next steps are executed
                 submitButton.setOnAction((ActionEvent event)->{
+                    //check if the page number is valud
                     if(checkingInt(pageNumberQ,quotesLabel2,"enter a valid page number" )){
                         quotesLabel2.setText("page number valid");  
+                        //check if all text areas and text fields are filles
                     if(!pageNumberQ.getText().isEmpty()&&!importantQuotes.getText().isEmpty()&&!quoteExplanation.getText().isEmpty()){
+                        //file name is the important quotes file
                         File writeFile = new File("importantQuotes.csv");
+                        //write intot he file
                         writer(writeFile,pageNumberQ,importantQuotes,quoteExplanation);
+                        //output sucess message
                         quotesLabel.setText("success, saved in csv file");
                     }
+                    //if all areas arent filled then show error
                     else {
                         error(quoteExplanation,pageNumberQ,importantQuotes,quotesLabel); 
                     }
                 }
                 });
+                //ste the grid
                 root.getChildren().add(importantQuotesGrid);
+                //break program
                 break;
             } 
+            //switch to the plot screen
             case "Plot Analysis" : {
+                //set the title
                 window.setTitle("Plot Analysis");
+                //add subit button
                 plotAnalysisGrid.add(submitButton, 0, 6);
+                //add action to button
                 submitButton.setOnAction((ActionEvent event)->{
+                    //check if the page number is valid
                     if(checkingInt(pageNumberP,plotLabel2,"enter a valid page number" )){
                         plotLabel2.setText("page number valid");  
+                        //check if the the text fields are complete
                     if(!pageNumberP.getText().isEmpty()&&!plotAnalysis.getText().isEmpty()&&!analysisText.getText().isEmpty()){
+                        //set the file name
                         File writeFile = new File("plotAnalysis.csv");
+                        //add the user inputs into the file
                         writer(writeFile,pageNumberP,plotAnalysis,analysisText);
+                        //add message
                         plotLabel.setText("success, saved in csv file");
                     }
+                    //if the text areas arent complete then show error
                     else {
                         error(analysisText,pageNumberP,plotAnalysis,plotLabel);   
                     }
                 }
                 });
+                //set the grid
                 root.getChildren().add(plotAnalysisGrid);
+                //break the scene
                 break;
             } 
+            //switch to the additonal notes screen
             case "Additional Notes" : {
+                //set the title 
                 window.setTitle("Additional Notes");
+                //add the submit button
                 additionalNotesGrid.add(submitButton, 0, 6);
+                //add action to button
                 submitButton.setOnAction((ActionEvent event)->{
+                    //check if page numebrs valid
                     if(checkingInt(pageNumberA,additonLabel2,"enter a valid page number" )){
+                        //if it is valid output success
                         quotesLabel2.setText("page number valid");  
+                        //check if the text areas or text fields are empty. If they are filled then do next tasks
                     if(!pageNumberA.getText().isEmpty()&&!additionalNotes.getText().isEmpty()&&!notes.getText().isEmpty()){
+                        //set the file name
                         File writeFile = new File("additionalNotes.csv");
+                        //write into the file if the text fields are completed
                         writer(writeFile,pageNumberA,additionalNotes,notes);
                         additonLabel.setText("success, saved in csv file");
                     }
+                    //of the etxt fields are empty output error
                     else{
                         error(notes,pageNumberA,additionalNotes,additonLabel); 
                     }
                 }
                 });
+                //set the grid
                 root.getChildren().add(additionalNotesGrid);
+                //break the scene
                 break;
             }
         }
- 
+        //set the window scene2
         window.setScene(scene2);
+        //show the window 
         window.show();
  
  
@@ -435,41 +519,72 @@ class idk2 extends hello5 {
     }
      * 
      */
-
-    private static void error(TextArea textArea,TextField page, TextField topic, Label selected1) {
+/**
+ * description- this method will display the message that the text fields/text area isnt completed and must be completed 
+ * @param textArea- text area is for checking if the text area of each scene is filled
+ * @param page - checking if the page number text field is filled
+ * @param topic -checking if the topic text field is filled
+ * @param selected1 -placing and showing the error message 
+ */
+     private static void error(TextArea textArea,TextField page, TextField topic, Label selected1) {
         if (textArea.getText().isEmpty()||page.getText().isEmpty()||topic.getText().isEmpty())
         {
         selected1.setText("Please complete all fields");
         }
    
     }
-
+/**
+ * description- this is a void method that will write into the csv file 
+ * @param writeFile -write file is the file with the needed file name
+ * @param page -page is the page number and will be displayed in the file
+ * @param topic -topic is the topic  and will be displayed in the filec
+ * @param details -details is the user inputs for the details and will be displayed in the file
+ */
     private static void writer(File writeFile, TextField page, TextField topic, TextArea details) {
+        //try will try the tasks
         try {
+            //print write will allow content to be placed in the csv file. Sets to true so nothing gets overwritten
             PrintWriter pw = new PrintWriter(new FileWriter(writeFile, true));
+            //print the page,topic and details number with the delimeter on the csv file
             pw.write(page.getText()+"/"); 
             pw.write(topic.getText()+"/");
             pw.write(details.getText());
+            //add a line so it skips one
             pw.println();
+            //flush will clear streams an dmake sure so over wrting happens
             pw.flush();
+            //close it
             pw.close();
         }
-
+        //catch with the exception
         catch (IOException e) {
           e.printStackTrace();
         }
       
     }
+    /**
+     * descripition- this is a boolean method that returns true if the page number is an integer and false if its not an integer
+     * @param page -the page number of each scene is needed so it can be converted to an int
+     * @param label2 -label 2 will show the message
+     * @param message -the string that will be outputted
+     * @return -returns true or false
+     */
     private static boolean checkingInt(TextField page, Label label2, String message) 
     { 
+        //try these tasks 
         try 
         { 
+            //chnage the page number into an int
             Integer.parseInt(page.getText()); 
+            //if its an int retrun true
             return true; 
         } 
+        //if try doesnt execute
         catch (NumberFormatException e) 
         { 
+            //output the label
             label2.setText(message);
+            //if its not an int return false
             return false; 
         } 
     }

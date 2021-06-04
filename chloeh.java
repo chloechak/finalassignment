@@ -27,7 +27,31 @@ public class chloeh extends Application {
 class newNote extends Application {
     public static void display (String value) {
 
+        Stage window = new Stage();
         Scene scene2 = new Scene(new Group(), 850, 450);
+        
+        // TextField <String> topic = new TextField<>();
+        // topic.getItems().addAll("character", "literaryDevices", "techniques", "themes", "importantQuotes", "plotAnalysis", "additionalNotes");
+
+        //topic[i] = new topic (character, literaryDevices, techniques, themes, importantQuotes, plotAnalysis, additionalNotes);
+
+        /**
+         * List<String> listOfIDs = Arrays.asList("detailText", "explanation", "impact", "implied", "quoteExplanation","analysisText", "note");
+        
+        // To access the array
+        Map<String, TextArea> mapOfTextAreas = new HashMap<>();
+        
+        // Loop and create areas
+        for (String sID : listOfIDs) {
+            // Create TextArea for each ID and put it in the map with ID as key
+            mapOfTextAreas.put(sID, new TextArea());
+        }
+        */
+
+        // HashMap<String, TextField> topics = new HashMap<String, TextField>();
+        
+        // Add keys and values (Name, TextField)
+        // topics.put("themes", new TextField(""));
 
         TextField character = new TextField("");
         TextField literaryDevices = new TextField("");
@@ -233,5 +257,25 @@ class newNote extends Application {
         window.setScene(scene2);
         window.show();
 
+    }
+
+    public static void display2 (String value) {
+
+         // Using Bubble Sort to Organize the Note from the Start of the Book towards the End Pages of the Book
+
+        /** Attempted Bubble Sort
+         * double temp;
+    
+            for (int i = 0; i < pageNum.length - 1; i++) {
+                for (int j = 0; j < pageNum.length - i - 1; j++) {
+                    // use bubble sort to order the numbers from smallest to greatest
+                    if (pageNum[j] > pageNum [j + 1]) {
+                        temp = pageNum [j];
+                        pageNum[j] = pageNum[j+1];
+                        pageNum[j+1] = temp;
+                    }
+                }
+            }
+         */
     }
 }

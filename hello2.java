@@ -1,7 +1,3 @@
-
-//Trying to read a csv file new way 
-
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -78,7 +74,7 @@ public class hello2 extends Application {
                 // Laksyha's part 
                 // add file 
                 // example of an action: 
-               selected1.setText(addNotes.getValue() + " selected");
+                selected1.setText(addNotes.getValue() + " selected");
                 
             }
  
@@ -313,7 +309,6 @@ class idk2 extends hello2 {
                 root.getChildren().add(techniquesGrid);
                 break;
             } 
-
             case "Themes" : {
                 window.setTitle("Themes");
                 themesGrid.add(submitButton, 0, 6);
@@ -363,23 +358,14 @@ class idk2 extends hello2 {
                 window.setTitle("Additional Notes");
                 additionalNotesGrid.add(submitButton, 0, 6);
                 submitButton.setOnAction((ActionEvent event)->{
-
                     if(!pageNumberA.getText().isEmpty()&&!additionalNotes.getText().isEmpty()&&!notes.getText().isEmpty()){
                         File writeFile = new File("additionalNotes.csv");
                         writer(writeFile,pageNumberA,additionalNotes,notes);
                     }
+                    else{
+                        error(notes,pageNumberA,additionalNotes, literaryLabel); 
+                    }
                 });
-
-                if(!pageNumberA.getText().isEmpty()&&!additionalNotes.getText().isEmpty()&&!notes.getText().isEmpty()){
-                File writeFile = new File("additionalNotes.csv");
-                 writer(writeFile,pageNumberA,additionalNotes,notes);
-                }
-                else{
-                    error(analysisText,pageNumberP,plotAnalysis,plotLabel);   
-                   }
-                   }
-                    );
-
                 root.getChildren().add(additionalNotesGrid);
                 break;
             }
@@ -472,16 +458,6 @@ class scene32 extends hello2 {
  
         TableColumn columnA3 = new TableColumn("Details");
         columnA3.setCellValueFactory(new PropertyValueFactory<>("Description"));
-
-
-        TableColumn columnB1 = new TableColumn("Page Number");
-        columnB1.setCellValueFactory(new PropertyValueFactory<>("PageNumber"));
- 
-        TableColumn columnB2 = new TableColumn("Topic");
-        columnB2.setCellValueFactory(new PropertyValueFactory<>("Topic"));
- 
-        TableColumn columnB3 = new TableColumn("Details");
-        columnB3.setCellValueFactory(new PropertyValueFactory<>("Description"));
  
         tableView.setItems(dataList);
         Group root = (Group)scene3.getRoot();
@@ -492,46 +468,14 @@ class scene32 extends hello2 {
  
         tableView.setPrefHeight(440);
  
-        //tableView.getColumns().clear();
+        tableView.getColumns().clear();
         System.out.println(value);
 
         switch (value) {
  
             case "Characters" : {
-
-                String line = "";
-                String splitBy = "|";
-
-                try {
-
-                    //parsing a CSV file into BufferedReader class constructor
-                    BufferedReader br = new BufferedReader(new FileReader("characters.csv"));
-
-                    // Returns a boolean value 
-                    while ((line = br.readLine()) != null) {
-
-                        String[] characters = line.split(splitBy); 
-                        String[] detailText;
-                        String[] character;
-                        String[] pageNumberC;
-                        System.out.println("Page Number: " + pageNumberC[0] + "\nCharacter: " + character[1] + "\nCharacter Detail : " + detailText[2] + " "); 
-                    }
-                }
                 
-                catch (IOException e) {
-
-                    e.printStackTrace(); 
-
-
-                }
-
-                        Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-                tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-                
-                window.setTitle("Characters");
-                window.show(); 
+                //window.setTitle("Characters");
                 
                 String CsvFile = "Characters.csv";
                     String FieldDelimiter = "/";
@@ -565,196 +509,15 @@ class scene32 extends hello2 {
                     Logger.getLogger(scene32.class.getName()).log(Level.SEVERE, null, ex);
                 }
  
-                tableView.getColumns().addAll(columnB1, columnB2, columnB3);
+                tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().addAll(tableView);
  
                 break;
             }
-
-            case "Literary Devices" : { 
-
-            //     String CsvFile = "literaryDevices.csv";
-            //     String FieldDelimiter = ",";
-     
-            //         BufferedReader br; 
-     
-            //         try {
-     
-            //             br = new BufferedReader(new FileReader(CsvFile)); 
-     
-            //             String line; 
-                        
-            //             while((line = br.readLine()) !=null) {
-     
-            //                 String[] fields = line.split(FieldDelimiter, -1); 
-            //                 Record record = new Record(fields[0], fields[1], fields[2]); 
-            //                 dataList.add(record); 
-            //             } 
-                        
- 
-            //         }
-
-            //         catch (FileNotFoundException ex) { 
-            //             Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-            //         }
-     
-            //         catch (IOException ex) {
-            //             Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-            //         }
-
-            //     tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-            //     root.getChildren().addAll(tableView);
- 
-            //     break;
-            // }
-
-            case "Techniques" : {
-
-            //     String CsvFile = "techniques.csv";
-            //     String FieldDelimiter = ",";
-     
-            //         BufferedReader br; 
-     
-            //         try {
-     
-            //             br = new BufferedReader(new FileReader(CsvFile)); 
-     
-            //             String line; 
-                        
-            //             while((line = br.readLine()) !=null) {
-     
-            //                 String[] fields = line.split(FieldDelimiter, -1); 
-            //                 Record record = new Record(fields[0], fields[1], fields[2]); 
-            //                 dataList.add(record); 
-            //             } 
-                        
- 
-            //         }
-            //         catch (FileNotFoundException ex) { 
-            //             Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-            //         }
-     
-            //         catch (IOException ex) {
-            //             Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-            //         }
-
-            //     tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-            //     root.getChildren().addAll(tableView);
- 
-            //     break;
-            // } 
-
-            case "Themes" : {
-
-            //     String CsvFile = "themes.csv";
-            //     String FieldDelimiter = ",";
-     
-            //         BufferedReader br; 
-     
-            //         try {
-     
-            //             br = new BufferedReader(new FileReader(CsvFile)); 
-     
-            //             String line; 
-                        
-            //             while((line = br.readLine()) !=null) {
-     
-            //                 String[] fields = line.split(FieldDelimiter, -1); 
-            //                 Record record = new Record(fields[0], fields[1], fields[2]); 
-            //                 dataList.add(record); 
-            //             } 
-                        
- 
-            //         }
-
-            //         catch (FileNotFoundException ex) { 
-            //             Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-            //         }
-     
-            //         catch (IOException ex) {
-            //             Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-            //         }
-
-            //     tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-            //     root.getChildren().addAll(tableView);
- 
-            //     break;
-            // } 
-
-            case "Important Quotes" : {
-
-                // String CsvFile = "importantQuotes.csv";
-                // String FieldDelimiter = ",";
-     
-                //     BufferedReader br; 
-     
-                //     try {
-     
-                //         br = new BufferedReader(new FileReader(CsvFile)); 
-     
-                //         String line; 
-                        
-                //         while((line = br.readLine()) !=null) {
-     
-                //             String[] fields = line.split(FieldDelimiter, -1); 
-                //             Record record = new Record(fields[0], fields[1], fields[2]); 
-                //             dataList.add(record); 
-                //         } 
-                        
- 
-                //     }
-
-                //     catch (FileNotFoundException ex) { 
-                //         Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-                //     }
-     
-                //     catch (IOException ex) {
-                //         Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-                //     }
-
-            //     tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-            //     root.getChildren().addAll(tableView);
- 
-            //     break;
-            // } 
-
-            case "Plot Analysis" : {
-
-            //     String CsvFile = "plotAnalysis.csv";
-            //     String FieldDelimiter = ",";
-     
-            //         BufferedReader br; 
-     
-            //         try {
-     
-            //             br = new BufferedReader(new FileReader(CsvFile)); 
-     
-            //             String line; 
-                        
-            //             while((line = br.readLine()) !=null) {
-     
-            //                 String[] fields = line.split(FieldDelimiter, -1); 
-            //                 Record record = new Record(fields[0], fields[1], fields[2]); 
-            //                 dataList.add(record); 
-            //             } 
-                        
- 
-            //         }
-            //         catch (FileNotFoundException ex) { 
-            //             Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-            //         }
-     
-            //         catch (IOException ex) {
-            //             Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-            //         }
-
-
-            //     tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-            //     root.getChildren().add(tableView);
             case "Literary Devices" : {
                 
                 window.setTitle("Literary Devices");
-                window.show();
+                window.show(); 
                 
                 String CsvFile = "literaryDevices.csv";
                     String FieldDelimiter = "/";
@@ -795,7 +558,7 @@ class scene32 extends hello2 {
             } 
  
             case "Techniques" : {
-                
+
                 window.setTitle("Techniques");
                 window.show(); 
  
@@ -883,7 +646,7 @@ class scene32 extends hello2 {
             } 
  
             case "Important Quotes" : {
-                
+
                 window.setTitle("Important Quotes");
                 window.show(); 
  
@@ -928,7 +691,7 @@ class scene32 extends hello2 {
             case "Plot Analysis" : {
 
                 window.setTitle("Plot Analysis");
-                window.show();
+                window.show(); 
  
                 String CsvFile = "plotAnalysis.csv";
                     String FieldDelimiter = "/";
@@ -965,48 +728,10 @@ class scene32 extends hello2 {
  
                 tableView.getColumns().addAll(columnA1, columnA2, columnA3);
                 root.getChildren().add(tableView);
-
  
-            //     break;
-            // } 
-            
+                break;
+            } 
             case "Additional Notes" : {
-
-
-        //         String CsvFile = "additionalNotes.csv";
-        //         String FieldDelimiter = ",";
-     
-        //             BufferedReader br; 
-     
-        //             try {
-     
-        //                 br = new BufferedReader(new FileReader(CsvFile)); 
-     
-        //                 String line; 
-                        
-        //                 while((line = br.readLine()) !=null) {
-     
-        //                     String[] fields = line.split(FieldDelimiter, -1); 
-        //                     Record record = new Record(fields[0], fields[1], fields[2]); 
-        //                     dataList.add(record); 
-        //                 } 
-                        
- 
-        //             }
-        //             catch (FileNotFoundException ex) { 
-        //                 Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);    
-        //             }
-     
-        //             catch (IOException ex) {
-        //                 Logger.getLogger(scene3.class.getName()).log(Level.SEVERE, null, ex);
-        //             }
-
-        //         tableView.getColumns().addAll(columnA1, columnA2, columnA3);
-        //         root.getChildren().add(tableView);
- 
-        //         break;
-        //     }
-        // }
 
                 window.setTitle("Additional Notes");
                 window.show(); 

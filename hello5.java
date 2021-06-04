@@ -169,22 +169,6 @@ class idk2 extends hello5 {
         TextField[] pageNum = {pageNumberC, pageNumberL, pageNumberTech, pageNumberTheme, pageNumberQ, pageNumberP, pageNumberA};
 
         TextArea[] fullNote = {detailText, explanation, impact, implied, quoteExplanation, analysisText, notes};
-
-        // Bubble Sort
-        double temp;
-
-        for (int i = 0; i < pageNum.length - 1; i++) {
-            // If j is greater than j+1, the program switches them
-            for (int j = 0; j < pageNum.length - i - 1; j++) {
-                // Uses bubble sort to order the numbers from smallest to greatest
-                if (pageNum[j] > pageNum [j + 1]) {
-                    temp = pageNum [j]; // Holds left variable
-                    pageNum[j] = pageNum[j+1]; // Overwrites left element with right
-                    pageNum[j+1] = temp;
-                }
-            }
-        }
-    
        
 
         // characters grid

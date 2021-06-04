@@ -162,6 +162,28 @@ class idk2 extends hello5 {
         Label quotesLabel2 = new Label();
         Label plotLabel2 = new Label();
         Label additonLabel2 = new Label();
+
+        //TextField[] topics = new TextField[7];
+        TextField[] topics = {character, literaryDevices, techniques, themes, importantQuotes, plotAnalysis, additionalNotes};
+
+        TextField[] pageNum = {pageNumberC, pageNumberL, pageNumberTech, pageNumberTheme, pageNumberQ, pageNumberP, pageNumberA};
+
+        TextArea[] fullNote = {detailText, explanation, impact, implied, quoteExplanation, analysisText, notes};
+
+        // Bubble Sort
+        double temp;
+
+        for (int i = 0; i < pageNum.length - 1; i++) {
+            // If j is greater than j+1, the program switches them
+            for (int j = 0; j < pageNum.length - i - 1; j++) {
+                // Uses bubble sort to order the numbers from smallest to greatest
+                if (pageNum[j] > pageNum [j + 1]) {
+                    temp = pageNum [j]; // Holds left variable
+                    pageNum[j] = pageNum[j+1]; // Overwrites left element with right
+                    pageNum[j+1] = temp;
+                }
+            }
+        }
     
        
 
@@ -406,6 +428,29 @@ class idk2 extends hello5 {
  
  
     }
+
+    /**
+     * Attemped Bubble Sort
+    public void bubbleSort(TextField[] pageNum) {
+
+        double temp;
+
+        int x = Integer.parseInt(pageNum.length);
+
+        for (int i = 0; i < pageNum.length - 1; i++) {
+            // If j is greater than j+1, the program switches them
+            for (int j = 0; j < pageNum.length - i - 1; j++) {
+                // Uses bubble sort to order the numbers from smallest to greatest
+                if (pageNum[j] > pageNum [j + 1]) {
+                    temp = pageNum [j]; // Holds left variable
+                    pageNum[j] = pageNum[j+1]; // Overwrites left element with right
+                    pageNum[j+1] = temp;
+                }
+            }
+        }
+    }
+     * 
+     */
 
     private static void error(TextArea textArea,TextField page, TextField topic, Label selected1) {
         if (textArea.getText().isEmpty()||page.getText().isEmpty()||topic.getText().isEmpty())

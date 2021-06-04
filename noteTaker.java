@@ -399,7 +399,9 @@ class secondScene extends noteTaker {
                 //the submit button's action will allow the processes to continue
                 submitButton.setOnAction((ActionEvent event)->{
                     //check if the page number is valid
-                    checkingInt(pageNumberL,literaryLabel2,"enter a valid page number" );
+                  if(checkingInt(pageNumberL,literaryLabel2,"enter a valid page number" )){
+
+                
                     //output that the page number valid if it is
                        literaryLabel2.setText("page number valid");  
                        //check if the text boxes are empty, if they arent execute the next couple of lines of code
@@ -415,6 +417,7 @@ class secondScene extends noteTaker {
                     else{
                     error(explanation,pageNumberL,literaryDevices, literaryLabel);  
                     }
+                }
                 
                 });
                 //set the literary Devices grid

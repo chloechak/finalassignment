@@ -38,17 +38,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.cell.PropertyValueFactory;
- 
 import javax.swing.JOptionPane;
 import javafx.scene.control.TableView;
- 
-public class hello5 extends Application {
+
+ /**
+  * @author chloe chak, chloe hoang, lakysha, dhruvika
+  */
+
+public class noteTaker extends Application {
     Scene scene1, scene2;
     Stage window;
     public static void main(String[] args) {
         launch(args);
     }
     
+    /**
+     * @author Chloe Chak
+     * Description: displays the primary stage and its components 
+     * 
+     * @param primaryStage: the first stage 
+     */
     @Override
     public void start(Stage primaryStage) {
         // main window/first stage 
@@ -65,7 +74,7 @@ public class hello5 extends Application {
         Label selected1= new Label(); 
         Label selected2 = new Label();
 
-        // new text 
+        // new text for title 
         Text welcome = new Text();
 
         // Text's dimensions and style 
@@ -81,7 +90,7 @@ public class hello5 extends Application {
         ComboBox<String> addNotes = new ComboBox<>(FXCollections.observableArrayList(categories));
  
         // takes combobox options and allows it to switch scenes 
-        addNotes.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> idk2.display(newValue));
+        addNotes.getSelectionModel().selectedItemProperty().addListener((v, oldValue, newValue) -> secondScene.display(newValue));
         
         // adds action and tells user what is selected from the combobox
         EventHandler<ActionEvent> addFile = new EventHandler<ActionEvent>() {
@@ -89,9 +98,10 @@ public class hello5 extends Application {
                 selected1.setText(addNotes.getValue() + " selected");
             }
         };
- 
+        // sets the action
         addNotes.setOnAction(addFile);
  
+        // takes combobox options and allows it to switch scenes 
         readNotes.getSelectionModel().selectedItemProperty().addListener( (v, oldValue, newValue) -> new thirdScene().display2(newValue));
  
         // adds action and tells user what is selected from the combobox
@@ -100,7 +110,7 @@ public class hello5 extends Application {
                 selected2.setText(readNotes.getValue() + " selected");
             }
         };
- 
+        // sets the action
         readNotes.setOnAction(addFile2);
  
         // sets grid pane for the first scene and adds the components
@@ -115,17 +125,21 @@ public class hello5 extends Application {
         grid.add(new Label("see notes: "),2,25);
         grid.add(readNotes, 2, 26);
         grid.add(selected2, 2, 27);
- 
+        
+
         Group root = (Group)scene1.getRoot();
+        // adds the grid to the scene 
         root.getChildren().add(grid);
+        // sets the scene 
         primaryStage.setScene(scene1);
+        // shows scene 
         primaryStage.show();
     }
     
     
 }
  
-class idk2 extends hello5 {
+class secondScene extends noteTaker {
     public static void display (String value) {
 
         Stage window = new Stage();
@@ -584,7 +598,7 @@ class idk2 extends hello5 {
         //try these tasks 
         try 
         { 
-            //chnage the page number into an int
+            //change the page number into an int
             Integer.parseInt(page.getText()); 
             //if its an int retrun true
             return true; 
@@ -600,8 +614,14 @@ class idk2 extends hello5 {
     }
 }
 
-class thirdScene extends hello5 {
+ /**
+  * @author Chloe Chak and Dhruvika
+  */
+class thirdScene extends noteTaker {
     
+    /**
+     * @author Chloe Chak 
+     */
     public class Record {
         // states the properties that can be read and modified 
         private SimpleStringProperty pageNumber, Topic, Description;
@@ -621,7 +641,15 @@ class thirdScene extends hello5 {
             return Description.get();
         }
 
-        // records the values of the strings 
+        /**
+         * Chloe Chak 
+         * 
+         * Description: takes the value of the user inputs from the csv file and records it 
+         * 
+         * @param pageNumber: stores page number from the csv file
+         * @param Topic: stores the character name, literary device used etc... 
+         * @param Description: stores user input fo the description of their topic 
+         */
         Record(String pageNumber, String Topic, String Description) {
             this.pageNumber = new SimpleStringProperty(pageNumber);
             this.Topic = new SimpleStringProperty(Topic);
@@ -634,6 +662,14 @@ class thirdScene extends hello5 {
     // creates observable list to store the values from the csv files
     private final static ObservableList<Record> dataList = FXCollections.observableArrayList();
  
+    /**
+     * Chloe Chak : tableview 
+     * Dhruvika: switch statement 
+     * 
+     * Description: creates the tableview in a new scene and adds the recorded information into it 
+     * 
+     * @param value: takes the option chosen from the combobox 
+     */
 
     public void display2 (String value) { 
         // new stage 
@@ -700,12 +736,6 @@ class thirdScene extends hello5 {
                         String[] fields = line.split(FieldDelimiter, -1); 
 
                         Record record = new Record(fields[0], fields[1], fields[2]); 
-
-                        // Prints user input
-                        System.out.println(fields[0]);
-                        System.out.println(fields[1]);
-                        System.out.println(fields[2]);
- 
                         dataList.add(record); 
                     } 
                 }

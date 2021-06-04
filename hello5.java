@@ -585,8 +585,12 @@ class secondScene extends noteTaker {
  
  
     }
-
+    
     /**
+     * @author- Chloe Hoang
+     */
+    
+    /*
      * Attemped Bubble Sort
     public void bubbleSort(TextField[] pageNum) {
 

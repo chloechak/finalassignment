@@ -7,7 +7,6 @@
 
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import javafx.application.Application;
 import javafx.beans.property.SimpleStringProperty;
@@ -27,18 +26,13 @@ import javafx.scene.Group;
 import java.util.logging.Logger;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javax.swing.JOptionPane;
 import javafx.scene.control.TableView;
 
  /**
@@ -255,7 +249,8 @@ class secondScene extends noteTaker {
         literaryDevicesGrid.add(new Label("Explanation: "), 0, 4);
         literaryDevicesGrid.add(explanation, 0, 5, 3, 1);   
         // Sets the location of the validation labels 
-        literaryDevicesGrid.add(literaryLabel, 6, 7); 
+        literaryDevicesGrid.add(literaryLabel, 5, 7); 
+        literaryDevicesGrid.add(literaryLabel2, 5, 1); 
 
         // techniques grid
         GridPane techniquesGrid = new GridPane();
@@ -274,7 +269,8 @@ class secondScene extends noteTaker {
         techniquesGrid.add(new Label("How it was used/Impact: "), 0, 4);
         techniquesGrid.add(impact, 0, 5, 3, 1); 
         // Sets the location of the validation labels 
-        techniquesGrid.add(techniqueLabel, 6, 7);
+        techniquesGrid.add(techniqueLabel, 5, 7);
+        techniquesGrid.add(techniqueLabel2, 5, 1);
 
         // themes grid
         GridPane themesGrid = new GridPane();
@@ -293,7 +289,8 @@ class secondScene extends noteTaker {
         themesGrid.add(new Label("How is it Implied?: "), 0, 4);
         themesGrid.add(implied, 0, 5, 3, 1);            
         // Sets the location of the validation labels  
-        themesGrid.add(themesLabel, 6, 7);
+        themesGrid.add(themesLabel, 5, 7);
+        themesGrid.add(themesLabel2, 5, 1);
 
         // important quotes grid
         GridPane importantQuotesGrid = new GridPane();
@@ -312,7 +309,8 @@ class secondScene extends noteTaker {
         importantQuotesGrid.add(new Label("Quote Explanation: "), 0, 4);
         importantQuotesGrid.add(quoteExplanation, 0, 5, 3, 1);  
         // Sets the location of the validation labels 
-        importantQuotesGrid.add(quotesLabel, 6, 7);   
+        importantQuotesGrid.add(quotesLabel, 5, 7);   
+        importantQuotesGrid.add(quotesLabel2, 5, 1);   
 
         // plot analysis grid
         GridPane plotAnalysisGrid = new GridPane();
@@ -331,7 +329,8 @@ class secondScene extends noteTaker {
         plotAnalysisGrid.add(new Label("Plot Analysis: "), 0, 4);
         plotAnalysisGrid.add(analysisText, 0, 5, 3, 1);     
         // Sets the location of the validation labels 
-        plotAnalysisGrid.add(plotLabel, 6, 7);
+        plotAnalysisGrid.add(plotLabel, 5, 7);
+        plotAnalysisGrid.add(plotLabel2, 5, 1);
 
         // additional notes grid
         GridPane additionalNotesGrid = new GridPane();
@@ -350,8 +349,8 @@ class secondScene extends noteTaker {
         additionalNotesGrid.add(new Label("Additional Note: "), 0, 4);
         additionalNotesGrid.add(notes, 0, 5, 3, 1); 
         // Sets the location of the validation labels 
-        additionalNotesGrid.add(additonLabel, 6, 7);
-
+        additionalNotesGrid.add(additonLabel, 5, 7);
+        additionalNotesGrid.add(additonLabel2, 5, 1);
         // Grants user to read file
         Group root = (Group)scene2.getRoot();
 
@@ -564,9 +563,10 @@ class secondScene extends noteTaker {
                         File writeFile = new File("additionalNotes.csv");
                         //write into the file if the text fields are completed
                         writer(writeFile,pageNumberA,additionalNotes,notes);
+                        //display success message
                         additonLabel.setText("success, saved in csv file");
                     }
-                    //of the etxt fields are empty output error
+                    //of the text fields are empty output error
                     else{
                         error(notes,pageNumberA,additionalNotes,additonLabel); 
                     }
@@ -622,8 +622,10 @@ class secondScene extends noteTaker {
  * @param selected1 -placing and showing the error message 
  */
      private static void error(TextArea textArea,TextField page, TextField topic, Label selected1) {
+         //if one or more of the text fields are empty
         if (textArea.getText().isEmpty()||page.getText().isEmpty()||topic.getText().isEmpty())
         {
+        //display the label 
         selected1.setText("Please complete all fields");
         }
    
